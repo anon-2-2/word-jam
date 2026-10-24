@@ -1,8 +1,8 @@
 * {
     box-sizing: border-box;
-  }
+}
   
-  body {
+body {
     margin: 0;
     min-height: 100vh;
     display: grid;
@@ -10,23 +10,53 @@
     background: #e5e2ce;
     color: #1b270d;
     font-family: system-ui, sans-serif;
-  }
+}
   
-  main {
-    width: min(90%, 600px);
-    padding: 3rem 2rem;
-    text-align: center;
-  }
+h1 {
+    font-size: clamp(1.5rem, 4vw, 2rem);
+}
   
-  h1 {
-    font-size: clamp(2.5rem, 8vw, 4rem);
-  }
-  
-  button {
+button {
     padding: 0.8rem 1.2rem;
     border: 0;
-    border-radius: 6px;
     background: #1b270d;
     color: white;
     cursor: pointer;
-  }
+}
+
+/* Desktop */
+main {
+    width: 728px;
+    padding: 3rem 2rem;
+    text-align: center;
+    margin: 0 auto;
+}
+
+.adspace {
+    width: 728px;
+    height: 90px;
+    padding: 0 0;
+    position: fixed;
+    margin: 0 auto;
+}
+
+.gamespace {
+    aspect-ratio: 1 / 1;
+}
+
+/* Mobile and narrow windows */
+@media (max-width: 728px) {
+    main {
+        width: 100%;
+        padding: 3rem 2rem;
+        text-align: center;
+    }
+
+    .adspace {
+        width: 320px;
+        height: 50px;
+        padding: 0 0;
+        position: fixed;
+        margin: 0 auto;
+    }
+}
