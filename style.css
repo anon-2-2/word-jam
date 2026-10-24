@@ -1,0 +1,32 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    margin: 0;
+    min-height: 100vh;
+    display: grid;
+    place-items: center;
+    background: #e5e2ce;
+    color: #1b270d;
+    font-family: system-ui, sans-serif;
+  }
+  
+  main {
+    width: min(90%, 600px);
+    padding: 3rem 2rem;
+    text-align: center;
+  }
+  
+  h1 {
+    font-size: clamp(2.5rem, 8vw, 4rem);
+  }
+  
+  button {
+    padding: 0.8rem 1.2rem;
+    border: 0;
+    border-radius: 6px;
+    background: #1b270d;
+    color: white;
+    cursor: pointer;
+  }
