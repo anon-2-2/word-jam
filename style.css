@@ -4,7 +4,7 @@
   
 body {
     margin: 0;
-    min-height: 100vh;
+    height: 100dvh;
     display: grid;
     place-items: center;
     background: #e5e2ce;
@@ -13,7 +13,7 @@ body {
 }
   
 h1 {
-    font-size: clamp(14px, 4vw, 28px);
+    font-size: clamp(14px, min(8vw,4dvh), 28px);
 }
   
 button {
@@ -48,6 +48,9 @@ main {
     grid-template-rows: repeat(7, 1fr);
     gap: 4px;
     margin-inline: auto;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 
     width: min(500px, 50dvh, 100vw);
     aspect-ratio: 1;
@@ -59,7 +62,7 @@ main {
     margin: 12px auto;
     padding: 0 12px;
     text-align: left;
-    font-size: clamp(14px, 4vw, 28px);
+    font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
@@ -103,7 +106,7 @@ main {
 
     background: #e5e2ce;
     border: 1px solid #1b270d;
-    font-size: clamp(14px, 4vw, 28px);
+    font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
     user-select: none;
     touch-action: none;
