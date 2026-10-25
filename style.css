@@ -49,7 +49,7 @@ main {
     gap: 4px;
     margin-inline: auto;
 
-    width: min(500px, 50dvh);
+    width: min(500px, 50dvh, 100vw);
     aspect-ratio: 1;
 }
 
@@ -61,7 +61,7 @@ main {
     text-align: left;
     font-size: clamp(14px, 4vw, 28px);
     white-space: nowrap;
-    width: min(500px, 50dvh);
+    width: min(500px, 50dvh, 100vw);
     height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
 }
 
@@ -93,7 +93,7 @@ main {
     margin: 12px auto;
     align-items: center;
     flex-direction: row;
-    width: min(500px, 50dvh);
+    width: min(500px, 50dvh, 100vw);
     gap: min(calc(476px / 7 + 8px), calc(calc(50dvh - 24px) / 7 + 8px));
 }
 
@@ -113,13 +113,13 @@ main {
 @media (max-width: 728px) {
     main {
         width: 100%;
-        padding: 3rem 2rem;
+        /*padding: 3rem 2rem;*/
         text-align: center;
     }
 
     .adspace {
-        width: 320px;
-        height: 50px;
+        width: 100vw;
+        height: 15.625vw;
         padding: 0 0;
         position: fixed;
         margin: 0 auto;
