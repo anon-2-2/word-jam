@@ -125,6 +125,12 @@ function stopDragging() {
     console.log(valid);
 
     tiles.forEach((tile) => {
+        if (valid && tile.dataset.selected =="true") {
+            tile.dataset.letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[
+                Math.floor(Math.random() * 26)
+            ];
+            tile.textContent = tile.dataset.letter;
+        }
         tile.dataset.selected = "false";
         tile.style.backgroundColor = "#e5e2ce";
     });
