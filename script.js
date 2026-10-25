@@ -20,56 +20,6 @@ for (let i = 0; i < 49; i++) {
     ];
     tile.textContent = tile.dataset.letter;
 
-    tile.addEventListener("pointerenter", (event) => {
-        if (pointerdn && tile.dataset.selected=="false") {
-            const index = Number(tile.dataset.index);
-            const row = Math.floor(index / 7);
-            const col = index % 7;
-
-            let i1 = -1;
-            let i2 = -1;
-            if (index > lasttileid) {
-                i2 = index;
-                i1 = lasttileid;
-            }
-            else {
-                i1 = index;
-                i2 = lasttileid;
-            }
-            if (i2 % 7 == 0) {
-                if (i2 - i1 != 7 && i2 - i1 != 6) {
-                    return;
-                }
-            }
-            else if (i1 % 7 == 0) {
-                if (i2 - i1 != 8 && i2 - i1 != 7 && i2 - i1 != 1) {
-                    return;
-                }
-            }
-            else {
-                if (i2 - i1 != 8 && i2 - i1 != 7 && i2 - i1 != 6 && i2 - i1 != 1) {
-                    return;
-                }
-            }
-        
-            wip += tile.dataset.letter;
-            tile.dataset.selected = true;
-            lasttileid = index;
-        
-            console.log(`Tile ${index}, row ${row}, column ${col}`);
-            console.log(`WIP: ${wip}`);
-
-            let printwip = wip.substring(0,1);
-            for (let i = 1; i < wip.length; i++) {
-                printwip += " " + wip.substring(i,i+1);
-            }
-            wiptext.textContent = printwip;
-        }
-        else {
-            console.log(`Selection failed`);
-        }
-    });
-
     board.appendChild(tile);
 }
 
@@ -88,6 +38,7 @@ board.addEventListener("pointerdown", (event) => {
 
     wip = tile.dataset.letter;
     tile.dataset.selected = "true";
+    tile.style.backgroundColor = "#676a51";
     lasttileid = index;
 
     //console.log(`Tile ${index}, row ${row}, column ${col}`);
@@ -138,7 +89,8 @@ board.addEventListener("pointermove", (event) => {
     }
 
     wip += tile.dataset.letter;
-    tile.dataset.selected = true;
+    tile.dataset.selected = "true";
+    tile.style.backgroundColor = "#676a51";
     lasttileid = index;
 
     let printwip = wip.substring(0,1);
@@ -147,3 +99,38 @@ board.addEventListener("pointermove", (event) => {
     }
     wiptext.textContent = printwip;
 });
+
+function stopDragging() {
+    pointerdn = false;
+    const tiles = document.querySelectorAll("#gamespace .tile");
+
+    let valid = checkWord(wip);
+    console.log(valid);
+
+    tiles.forEach((tile) => {
+        tile.dataset.selected = "false";
+        tile.style.backgroundColor = "#e5e2ce";
+    });
+
+    lasttileid = -1;
+    wip = "";
+    wiptext.textContent = "";
+}
+
+window.addEventListener("pointerup", stopDragging);
+window.addEventListener("pointercancel", stopDragging);
+
+const jsonresp = await fetch("./wordtrie.json");
+const jsondata = await jsonresp.json();
+
+// Will return a boolean
+function checkWord(word) {
+    let node = jsondata;
+    for (const char of word.toLowerCase()) {
+        node = node.children?.[char];
+
+        if (!node) return false;
+    }
+
+    return node.isWord;
+}
