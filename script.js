@@ -1,11 +1,7 @@
-/*document.querySelector("#clickme").addEventListener("click", () => {
-    document.querySelector("#textspot").textContent =
-      "About time.";
-  });*/
-
 const board = document.querySelector("#gamespace");
 const wiptext = document.querySelector("#wiptext");
 let wip="";
+let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
 
@@ -40,6 +36,7 @@ board.addEventListener("pointerdown", (event) => {
     tile.dataset.selected = "true";
     tile.style.backgroundColor = "#676a51";
     lasttileid = index;
+    wipids.push(index);
 
     //console.log(`Tile ${index}, row ${row}, column ${col}`);
     //console.log(`WIP: ${wip}`);
@@ -61,6 +58,15 @@ board.addEventListener("pointermove", (event) => {
     const index = Number(tile.dataset.index);
     const row = Math.floor(index / 7);
     const col = index % 7;
+
+    if (index == wipids[wipids.length - 2]) {
+        wip = wip.substring(0, wip.length - 1);
+        const tile2 = document.querySelector(`#gamespace .tile[data-index="${wipids[wipids.length - 1]}"]`);
+        tile2.dataset.selected = "false";
+        tile2.style.backgroundColor = "#e5e2ce";
+        lasttileid = wipids[wipids.length - 2];
+        wipids.pop();
+    }
 
     let i1 = -1;
     let i2 = -1;
@@ -92,6 +98,7 @@ board.addEventListener("pointermove", (event) => {
     tile.dataset.selected = "true";
     tile.style.backgroundColor = "#676a51";
     lasttileid = index;
+    wipids.push(index);
 
     let printwip = wip.substring(0,1);
     for (let i = 1; i < wip.length; i++) {
@@ -120,6 +127,8 @@ function stopDragging() {
 window.addEventListener("pointerup", stopDragging);
 window.addEventListener("pointercancel", stopDragging);
 
+/* */
+
 const jsonresp = await fetch("./wordtrie.json");
 const jsondata = await jsonresp.json();
 
@@ -134,3 +143,4 @@ function checkWord(word) {
 
     return node.isWord;
 }
+
