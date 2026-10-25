@@ -4,6 +4,8 @@
   });*/
 
 const board = document.querySelector("#gamespace");
+const wipspace = document.querySelector("#wipspace");
+const wiptext = document.querySelector("#wiptext");
 let wip="";
 let pointerdn=false;
 
@@ -29,6 +31,13 @@ for (let i = 0; i < 49; i++) {
         
             console.log(`Tile ${index}, row ${row}, column ${col}`);
             console.log(`WIP: ${wip}`);
+
+            let printwip = wip.substring(0,1);
+            for (let i = 1; i < wip.length; i++) {
+                printwip += " " + wip.substring(i,i+1);
+            }
+            document.querySelector("#wiptext").textContent = printwip;
+            fitText(wipspace, wiptext, 10, wiptext.style.fontSize);
         }
         else {
             console.log(`Selection failed`);
@@ -55,3 +64,14 @@ board.addEventListener("pointerdown", (event) => {
     console.log(`WIP: ${wip}`);
 });
 
+function fitText(element1, element2, minSize = 14, maxSize = 28) {
+    element2.style.fontSize = `${maxSize}px`;
+
+    while (
+        element2.scrollWidth > element1.width &&
+        parseFloat(element2.style.fontSize) > minSize
+    ) {
+        element2.style.fontSize =
+            `${parseFloat(element2.style.fontSize) - 1}px`;
+    }
+}

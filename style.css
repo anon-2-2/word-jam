@@ -13,21 +13,22 @@ body {
 }
   
 h1 {
-    font-size: clamp(1.5rem, 4vw, 2rem);
+    font-size: clamp(14px, 4vw, 28px);
 }
   
 button {
-    padding: 0.8rem 1.2rem;
+    text-align: center;
     border: 0;
-    background: #1b270d;
-    color: white;
+    padding: 12pt 12pt;
+    background: #e5e2ce;
+    color: #1b270d;
     cursor: pointer;
 }
 
 /* Desktop */
 main {
     width: 728px;
-    padding: 3rem 2rem;
+    /*padding: 3rem 2rem;*/
     text-align: center;
     margin: 0 auto;
 }
@@ -38,6 +39,7 @@ main {
     padding: 0 0;
     position: fixed;
     margin: 0 auto;
+    border: 2pt solid #1b270d
 }
 
 #gamespace {
@@ -49,6 +51,50 @@ main {
 
     width: min(500px, 50dvh);
     aspect-ratio: 1;
+}
+
+#wipspace {
+    display: flex;
+    align-items: center;
+    margin: 12px auto;
+    padding: 0 12px;
+    text-align: left;
+    font-size: clamp(14px, 4vw, 28px);
+    white-space: nowrap;
+    width: min(500px, 50dvh);
+    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+}
+
+#shufflebutton {
+    display: flex;
+    place-items: center;
+    width: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+}
+
+#infobutton {
+    display: flex;
+    place-items: center;
+    width: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+}
+
+#scoredisplay {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    text-align: left;
+    width: min(calc(calc(1428px / 7) + 8px), calc(calc(calc(150dvh - 72px) / 7) + 8px));
+    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+}
+
+#scorespace {
+    display: flex;
+    margin: 12px auto;
+    align-items: center;
+    flex-direction: row;
+    width: min(500px, 50dvh);
+    gap: min(calc(476px / 7 + 8px), calc(calc(50dvh - 24px) / 7 + 8px));
 }
 
 .tile {
