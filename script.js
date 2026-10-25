@@ -66,6 +66,16 @@ board.addEventListener("pointermove", (event) => {
         tile2.style.backgroundColor = "#e5e2ce";
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
+
+        let printwip = wip.substring(0,1);
+        for (let i = 1; i < wip.length; i++) {
+            printwip += " " + wip.substring(i,i+1);
+        }
+        wiptext.textContent = printwip;
+        return;
+    }
+    else if (tile.dataset.selected == "true") {
+        return;
     }
 
     let i1 = -1;
