@@ -141,7 +141,7 @@ function stopDragging() {
 }
 
 window.addEventListener("pointerup", stopDragging);
-window.addEventListener("pointercancel", stopDragging);
+//window.addEventListener("pointercancel", stopDragging);
 
 /* */
 
