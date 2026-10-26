@@ -44,8 +44,8 @@ main {
 
 #gamespace {
     display: grid;
-    grid-template-columns: repeat(7, 1fr);
-    grid-template-rows: repeat(7, 1fr);
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(5, 1fr);
     gap: 4px;
     margin-inline: auto;
     touch-action: none;
@@ -65,21 +65,21 @@ main {
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
 #shufflebutton {
     display: flex;
     place-items: center;
-    width: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
-    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    width: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
 #infobutton {
     display: flex;
     place-items: center;
-    width: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
-    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    width: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
 #scoredisplay {
@@ -87,8 +87,8 @@ main {
     align-items: center;
     padding: 0 12px;
     text-align: left;
-    width: min(calc(calc(1428px / 7) + 8px), calc(calc(calc(150dvh - 72px) / 7) + 8px));
-    height: min(calc(476px / 7), calc(calc(50dvh - 24px) / 7));
+    width: min(calc(1452px / 5 + 8px), calc((150dvh - 48px) / 5 + 8px));
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
 #scorespace {
@@ -97,7 +97,7 @@ main {
     align-items: center;
     flex-direction: row;
     width: min(500px, 50dvh, 100vw);
-    gap: min(calc(476px / 7 + 8px), calc(calc(50dvh - 24px) / 7 + 8px));
+    gap: 4px;
 }
 
 .tile {

@@ -5,7 +5,7 @@ let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
 
-for (let i = 0; i < 49; i++) {
+for (let i = 0; i < 25; i++) {
     const tile = document.createElement("div");
   
     tile.className = "tile";
@@ -29,8 +29,8 @@ board.addEventListener("pointerdown", (event) => {
     pointerdn = true;
 
     const index = Number(tile.dataset.index);
-    const row = Math.floor(index / 7);
-    const col = index % 7;
+    const row = Math.floor(index / 5);
+    const col = index % 5;
 
     wip = tile.dataset.letter;
     tile.dataset.selected = "true";
@@ -56,8 +56,8 @@ board.addEventListener("pointermove", (event) => {
     if (!tile) return;
 
     const index = Number(tile.dataset.index);
-    const row = Math.floor(index / 7);
-    const col = index % 7;
+    const row = Math.floor(index / 5);
+    const col = index % 5;
 
     if (index == wipids[wipids.length - 2]) {
         wip = wip.substring(0, wip.length - 1);
@@ -88,18 +88,18 @@ board.addEventListener("pointermove", (event) => {
         i1 = index;
         i2 = lasttileid;
     }
-    if (i2 % 7 == 0) {
-        if (i2 - i1 != 7 && i2 - i1 != 6) {
+    if (i2 % 5 == 0) {
+        if (i2 - i1 != 5 && i2 - i1 != 4) {
             return;
         }
     }
-    else if (i1 % 7 == 0) {
-        if (i2 - i1 != 8 && i2 - i1 != 7 && i2 - i1 != 1) {
+    else if (i1 % 5 == 0) {
+        if (i2 - i1 != 6 && i2 - i1 != 5 && i2 - i1 != 1) {
             return;
         }
     }
     else {
-        if (i2 - i1 != 8 && i2 - i1 != 7 && i2 - i1 != 6 && i2 - i1 != 1) {
+        if (i2 - i1 != 6 && i2 - i1 != 5 && i2 - i1 != 4 && i2 - i1 != 1) {
             return;
         }
     }
