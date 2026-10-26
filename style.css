@@ -73,14 +73,7 @@ main {
     text-align: left;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
-    width: min(500px, 50dvh, 100vw);
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
-}
-
-#shufflebutton {
-    display: flex;
-    place-items: center;
-    width: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    width: min(387px, calc((50dvh - 16px) * 4 / 5), calc((100vw - 16px) * 4 / 5));
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
@@ -95,8 +88,15 @@ main {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    text-align: left;
-    width: min(calc(1452px / 5 + 8px), calc((150dvh - 48px) / 5 + 8px));
+    width: min(248px, calc(25dvh - 2px), calc(50vw - 2px));
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+}
+
+#movesdisplay {
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    width: min(248px, calc(25dvh - 2px), calc(50vw - 2px));
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
