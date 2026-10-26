@@ -1,3 +1,12 @@
+:root {
+    --t1-color: #5e9ede;
+    --t2-color: #6ed8b6;
+    --t3-color: #bae075;
+    --t4-color: #c8905b;
+    --t5-color: #c96161;
+    --t6-color: #7c7c7c;
+}
+
 * {
     box-sizing: border-box;
 }
@@ -104,7 +113,7 @@ main {
     display: grid;
     place-items: center;
 
-    background: #e5e2ce;
+    background: #5e9ede;
     border: 1px solid #1b270d;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;

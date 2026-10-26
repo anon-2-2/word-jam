@@ -11,6 +11,7 @@ for (let i = 0; i < 25; i++) {
     tile.className = "tile";
     tile.dataset.index = i;
     tile.dataset.selected = "false";
+    tile.dataset.replacement = 0;
     tile.dataset.letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[
         Math.floor(Math.random() * 26)
     ];
@@ -63,7 +64,7 @@ board.addEventListener("pointermove", (event) => {
         wip = wip.substring(0, wip.length - 1);
         const tile2 = document.querySelector(`#gamespace .tile[data-index="${wipids[wipids.length - 1]}"]`);
         tile2.dataset.selected = "false";
-        tile2.style.backgroundColor = "#e5e2ce";
+        tile2.style.backgroundColor = getColor(tile2.dataset.replacement);
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
 
@@ -130,9 +131,10 @@ function stopDragging() {
                 Math.floor(Math.random() * 26)
             ];
             tile.textContent = tile.dataset.letter;
+            tile.dataset.replacement = (Number)(tile.dataset.replacement) + 1;
         }
         tile.dataset.selected = "false";
-        tile.style.backgroundColor = "#e5e2ce";
+        tile.style.backgroundColor = getColor(tile.dataset.replacement);
     });
 
     lasttileid = -1;
@@ -160,3 +162,23 @@ function checkWord(word) {
     return node.isWord;
 }
 
+function getColor(replac) {
+    if (replac == 0) {
+        return "#5e9ede";
+    }
+    else if (replac == 1) {
+        return "#6ed8b6";
+    }
+    else if (replac == 2) {
+        return "#bae075";
+    }
+    else if (replac == 3) {
+        return "#c8905b";
+    }
+    else if (replac == 4) {
+        return "#c96161";
+    }
+    else {
+        return "#7c7c7c";
+    }
+}
