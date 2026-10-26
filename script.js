@@ -5,6 +5,20 @@ let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
 
+const letters = [
+    'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
+    'R', 'D', 'L', 'U', 'C', 'W', 'M', 'F',
+    'Y', 'G', 'P', 'B', 'V', 'K', 'J', 'X',
+    'Q', 'Z'
+];
+
+const weights = [
+    0.1, 0.09, 0.08, 0.08, 0.07, 0.07, 0.07, 0.06,
+    0.06, 0.04, 0.04, 0.03, 0.03, 0.025, 0.025, 0.02,
+    0.02, 0.02, 0.02, 0.015, 0.01, 0.01, 0.005, 0.005,
+    0.0025, 0.0025
+];
+
 for (let i = 0; i < 25; i++) {
     const tile = document.createElement("div");
   
@@ -12,9 +26,7 @@ for (let i = 0; i < 25; i++) {
     tile.dataset.index = i;
     tile.dataset.selected = "false";
     tile.dataset.replacement = 0;
-    tile.dataset.letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[
-        Math.floor(Math.random() * 26)
-    ];
+    tile.dataset.letter = randomLetter();
     tile.textContent = tile.dataset.letter;
 
     board.appendChild(tile);
@@ -127,9 +139,7 @@ function stopDragging() {
 
     tiles.forEach((tile) => {
         if (valid && tile.dataset.selected =="true") {
-            tile.dataset.letter = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"[
-                Math.floor(Math.random() * 26)
-            ];
+            tile.dataset.letter =  randomLetter();
             tile.textContent = tile.dataset.letter;
             tile.dataset.replacement = (Number)(tile.dataset.replacement) + 1;
         }
@@ -181,4 +191,16 @@ function getColor(replac) {
     else {
         return "#7c7c7c";
     }
+}
+
+function randomLetter() {
+    let roll = Math.random();
+
+    let idx = 0;
+    for (const weight of weights) {
+        roll -= weight;
+        if (roll < 0) return letters[idx];
+        else idx += 1;
+    }
+    return 'E';
 }
