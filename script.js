@@ -210,8 +210,9 @@ function updateWIPText() {
     for (let i = 1; i < wip.length; i++) {
         printwip += " " + wip.substring(i,i+1);
     }
-    wiptext.textContent = printwip;
-    fitText(wiptext, wiptext.style.fontSize, 8);
+    const wiph1 = wiptext.querySelector("h1");
+    wiph1.textContent = printwip;
+    fitText(wiph1, wiph1.style.fontSize, 8);
 }
 
 const observer = new ResizeObserver(() => {
