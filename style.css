@@ -68,6 +68,7 @@ main {
 #wipspace {
     display: flex;
     align-items: center;
+    gap: 4px;
     margin: 12px auto;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
@@ -80,7 +81,7 @@ main {
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
     overflow: hidden;
-    width: min(387px, calc((50dvh - 16px) * 4 / 5), calc((100vw - 16px) * 4 / 5));
+    width: min(399px, calc((50dvh - 16px) * 4 / 5 + 12px), calc((100vw - 16px) * 4 / 5 + 12px));
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
