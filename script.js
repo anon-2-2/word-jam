@@ -193,6 +193,8 @@ function randomLetter() {
 
 function fitText(element, maxSize=24, minSize=8) {
     let size = parseInt(maxSize);
+    console.log(maxSize);
+    console.log(size);
     element.style.fontSize = size + "pt";
 
     while (
@@ -201,7 +203,9 @@ function fitText(element, maxSize=24, minSize=8) {
     ) {
         size--;
         element.style.fontSize = size + "pt";
+        console.log("size decrease");
     }
+    console.log(size);
 }
 
 function updateWIPText() {
