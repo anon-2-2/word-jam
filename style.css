@@ -69,10 +69,17 @@ main {
     display: flex;
     align-items: center;
     margin: 12px auto;
+    width: min(500px, 50dvh, 100vw);
+    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+}
+
+#wiptext {
+    display: inline-block;
     padding: 0 12px;
     text-align: left;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
+    overflow: hidden;
     width: min(387px, calc((50dvh - 16px) * 4 / 5), calc((100vw - 16px) * 4 / 5));
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }

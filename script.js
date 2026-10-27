@@ -54,11 +54,7 @@ board.addEventListener("pointerdown", (event) => {
     //console.log(`Tile ${index}, row ${row}, column ${col}`);
     //console.log(`WIP: ${wip}`);
 
-    let printwip = wip.substring(0,1);
-    for (let i = 1; i < wip.length; i++) {
-        printwip += " " + wip.substring(i,i+1);
-    }
-    wiptext.textContent = printwip;
+    updateWIPText();
 });
 
 board.addEventListener("pointermove", (event) => {
@@ -80,11 +76,7 @@ board.addEventListener("pointermove", (event) => {
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
 
-        let printwip = wip.substring(0,1);
-        for (let i = 1; i < wip.length; i++) {
-            printwip += " " + wip.substring(i,i+1);
-        }
-        wiptext.textContent = printwip;
+        updateWIPText();
         return;
     }
     else if (tile.dataset.selected == "true") {
@@ -123,11 +115,7 @@ board.addEventListener("pointermove", (event) => {
     lasttileid = index;
     wipids.push(index);
 
-    let printwip = wip.substring(0,1);
-    for (let i = 1; i < wip.length; i++) {
-        printwip += " " + wip.substring(i,i+1);
-    }
-    wiptext.textContent = printwip;
+    updateWIPText();
 });
 
 function stopDragging() {
@@ -149,13 +137,11 @@ function stopDragging() {
 
     lasttileid = -1;
     wip = "";
-    wiptext.textContent = "";
+    updateWIPText();
 }
 
 window.addEventListener("pointerup", stopDragging);
 //window.addEventListener("pointercancel", stopDragging);
-
-/* */
 
 const jsonresp = await fetch("./wordtrie.json");
 const jsondata = await jsonresp.json();
@@ -204,3 +190,32 @@ function randomLetter() {
     }
     return 'E';
 }
+
+function fitText(element, maxSize=24, minSize=8) {
+    element.style.fontSize = maxSize + "pt";
+
+    let size = maxSize;
+
+    while (
+        element.scrollWidth > element.clientWidth &&
+        size > minSize
+    ) {
+        size--;
+        element.style.fontSize = size + "pt";
+    }
+}
+
+function updateWIPText() {
+    let printwip = wip.substring(0,1);
+    for (let i = 1; i < wip.length; i++) {
+        printwip += " " + wip.substring(i,i+1);
+    }
+    wiptext.textContent = printwip;
+    fitText(wiptext, wiptext.style.fontSize, 8);
+}
+
+const observer = new ResizeObserver(() => {
+    updateWIPText();
+});
+
+observer.observe(wiptext);
