@@ -83,6 +83,7 @@ main {
     overflow: hidden;
     width: min(399px, calc((50dvh - 16px) * 4 / 5 + 12px), calc((100vw - 16px) * 4 / 5 + 12px));
     height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    line-height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
 }
 
 #infobutton {
