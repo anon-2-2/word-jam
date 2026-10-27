@@ -216,7 +216,7 @@ function updateWIPText() {
     }
     const wiph1 = wiptext.querySelector("h1");
     wiph1.textContent = printwip;
-    fitText(wiph1, wiph1.style.fontSize, 8);
+    fitText(wiph1, getComputedStyle(wiph1).fontSize, 8);
     console.log("update complete");
 }
 
