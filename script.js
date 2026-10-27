@@ -193,16 +193,16 @@ function randomLetter() {
 
 function fitText(element, maxSize=24, minSize=8) {
     console.log(maxSize);
-    let size = Math.floor(parseFloat(maxSize));
+    let size = Math.min(Math.floor(parseFloat(maxSize)), 28);
     console.log(size);
-    element.style.fontSize = size + "pt";
+    element.style.fontSize = size + "px";
 
     while (
         element.scrollWidth > element.clientWidth &&
         size > minSize
     ) {
         size--;
-        element.style.fontSize = size + "pt";
+        element.style.fontSize = size + "px";
         console.log("size decrease");
     }
     console.log(size);
