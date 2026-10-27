@@ -192,8 +192,8 @@ function randomLetter() {
 }
 
 function fitText(element, maxSize=24, minSize=8) {
-    let size = parseInt(maxSize);
     console.log(maxSize);
+    let size = Math.floor(parseFloat(maxSize));
     console.log(size);
     element.style.fontSize = size + "pt";
 
@@ -209,6 +209,7 @@ function fitText(element, maxSize=24, minSize=8) {
 }
 
 function updateWIPText() {
+    console.log("start update");
     let printwip = wip.substring(0,1);
     for (let i = 1; i < wip.length; i++) {
         printwip += " " + wip.substring(i,i+1);
