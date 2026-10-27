@@ -216,6 +216,7 @@ function updateWIPText() {
     const wiph1 = wiptext.querySelector("h1");
     wiph1.textContent = printwip;
     fitText(wiph1, wiph1.style.fontSize, 8);
+    console.log("update complete");
 }
 
 const observer = new ResizeObserver(() => {
