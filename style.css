@@ -126,7 +126,7 @@ main {
     align-items: center;
 }
 
-#resultspace.hidden {
+.hidden {
     display: none;
 }
 
@@ -134,7 +134,7 @@ main {
     display: grid;
     place-items: center;
 
-    background: #5e9ede;
+    background: --t1-color;
     border: 1px solid #1b270d;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
