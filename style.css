@@ -121,7 +121,6 @@ main {
     inset: 0;
     z-index: 1000;
     
-    display: flex;
     justify-content: center;
     align-items: center;
 }
@@ -134,7 +133,7 @@ main {
     display: grid;
     place-items: center;
 
-    background: --t1-color;
+    background: #91b367;
     border: 1px solid #1b270d;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
