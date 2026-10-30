@@ -6,6 +6,8 @@ let lasttileid=-1;
 let pointerdn=false;
 let moves = 10;
 
+document.querySelector("#resultspace").classList.add("hidden");
+
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
     'R', 'D', 'L', 'U', 'C', 'W', 'M', 'F',
