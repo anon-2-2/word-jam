@@ -153,6 +153,7 @@ function stopDragging() {
 
     if (valid) {
         moves -= 1;
+        updateMovesText()
     }
     if (moves == 0) {
         showResults();
@@ -220,13 +221,11 @@ function fitText(element, maxSize=24, minSize=8) {
     ) {
         size--;
         element.style.fontSize = size + "px";
-        console.log("size decrease");
     }
     console.log(size);
 }
 
 function updateWIPText() {
-    console.log("start update");
     let printwip = wip.substring(0,1);
     for (let i = 1; i < wip.length; i++) {
         printwip += " " + wip.substring(i,i+1);
@@ -234,7 +233,11 @@ function updateWIPText() {
     const wiph1 = wiptext.querySelector("h1");
     wiph1.textContent = printwip;
     fitText(wiph1, getComputedStyle(document.querySelector(".tile")).fontSize, 8);
-    console.log("update complete");
+}
+
+function updateMovesText() {
+    const movesh1 = document.querySelector("#movesdisplay").querySelector("h1");
+    movesh1.textContent = moves + "moves";
 }
 
 const observer = new ResizeObserver(() => {
