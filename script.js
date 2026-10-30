@@ -4,6 +4,7 @@ let wip="";
 let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
+let moves = 10;
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
@@ -39,6 +40,8 @@ board.addEventListener("pointerdown", (event) => {
     const tile = event.target.closest(".tile");
     if (!tile) return;
 
+    if (tile.dataset.replacement == 3) return;
+
     pointerdn = true;
 
     const index = Number(tile.dataset.index);
@@ -63,6 +66,8 @@ board.addEventListener("pointermove", (event) => {
     const element = document.elementFromPoint(event.clientX, event.clientY);
     const tile = element?.closest(".tile");
     if (!tile) return;
+
+    if (tile.dataset.replacement == 3) return;
 
     const index = Number(tile.dataset.index);
     const row = Math.floor(index / 5);
@@ -127,9 +132,14 @@ function stopDragging() {
 
     tiles.forEach((tile) => {
         if (valid && tile.dataset.selected =="true") {
-            tile.dataset.letter =  randomLetter();
-            tile.textContent = tile.dataset.letter;
             tile.dataset.replacement = (Number)(tile.dataset.replacement) + 1;
+            if (tile.dataset.replacement == 3) {
+                tile.dataset.letter = " ";
+                tile.textContent = tile.dataset.letter;
+            } else {
+                tile.dataset.letter =  randomLetter();
+                tile.textContent = tile.dataset.letter;
+            }           
         }
         tile.dataset.selected = "false";
         tile.style.backgroundColor = getColor(tile.dataset.replacement);
@@ -138,6 +148,13 @@ function stopDragging() {
     lasttileid = -1;
     wip = "";
     updateWIPText();
+
+    if (valid) {
+        moves -= 1;
+    }
+    if (moves == 0) {
+        showResults();
+    }
 }
 
 window.addEventListener("pointerup", stopDragging);
@@ -158,21 +175,19 @@ function checkWord(word) {
     return node.isWord;
 }
 
+function showResults() {
+    document.querySelector("#resultspace").classList.remove("hidden");
+}
+
 function getColor(replac) {
     if (replac == 0) {
-        return "#5e9ede";
+        return "#91b367";
     }
     else if (replac == 1) {
-        return "#6ed8b6";
+        return "#d1c982";
     }
     else if (replac == 2) {
-        return "#bae075";
-    }
-    else if (replac == 3) {
-        return "#c8905b";
-    }
-    else if (replac == 4) {
-        return "#c96161";
+        return "#d88172";
     }
     else {
         return "#7c7c7c";

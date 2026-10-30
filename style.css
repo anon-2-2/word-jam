@@ -1,10 +1,8 @@
 :root {
-    --t1-color: #5e9ede;
-    --t2-color: #6ed8b6;
-    --t3-color: #bae075;
-    --t4-color: #c8905b;
-    --t5-color: #c96161;
-    --t6-color: #7c7c7c;
+    --t1-color: #91b367;
+    --t2-color: #d1c982;
+    --t3-color: #d88172;
+    --td-color: #7c7c7c;
 }
 
 * {
@@ -116,6 +114,20 @@ main {
     flex-direction: row;
     width: min(500px, 50dvh, 100vw);
     gap: 4px;
+}
+
+#resultspace {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#resultspace.hidden {
+    display: none;
 }
 
 .tile {
