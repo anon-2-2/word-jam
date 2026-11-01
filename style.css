@@ -53,7 +53,7 @@ main {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     grid-template-rows: repeat(5, 1fr);
-    gap: 4px;
+    gap: 6px;
     margin-inline: auto;
     touch-action: none;
     user-select: none;
@@ -66,10 +66,10 @@ main {
 #wipspace {
     display: flex;
     align-items: center;
-    gap: 4px;
+    gap: 6px;
     margin: 12px auto;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
 #wiptext {
@@ -79,32 +79,32 @@ main {
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     white-space: nowrap;
     overflow: hidden;
-    width: min(399px, calc((50dvh - 16px) * 4 / 5 + 12px), calc((100vw - 16px) * 4 / 5 + 12px));
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
-    line-height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    width: min(399px, calc((50dvh - 24px) * 4 / 5 + 18px), calc((100vw - 24px) * 4 / 5 + 18px));
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+    line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
 #infobutton {
     display: flex;
     place-items: center;
-    width: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    width: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
 #scoredisplay {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    width: min(248px, calc(25dvh - 2px), calc(50vw - 2px));
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    width: min(247px, calc(25dvh - 3px), calc(50vw - 3px));
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
 #movesdisplay {
     display: flex;
     align-items: center;
     padding: 0 12px;
-    width: min(248px, calc(25dvh - 2px), calc(50vw - 2px));
-    height: min(calc(484px / 5), calc(calc(50dvh - 16px) / 5));
+    width: min(247px, calc(25dvh - 3px), calc(50vw - 3px));
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
 #scorespace {
@@ -135,7 +135,7 @@ main {
     place-items: center;
 
     background: #f3f4f0;
-    border: 8px solid #426f0f;
+    border: 6px solid #426f0f;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
     user-select: none;

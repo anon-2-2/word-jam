@@ -154,12 +154,14 @@ function stopDragging() {
             }           
         }
         tile.dataset.selected = "false";
+        tile.style.backgroundColor = "#f3f4f0";
         tile.style.borderColor = getColor(tile.dataset.replacement);
     });
 
     lasttileid = -1;
     wip = "";
     updateWIPText();
+    updateScoreText();
 
     if (valid) {
         moves -= 1;
