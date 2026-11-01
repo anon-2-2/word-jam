@@ -6,6 +6,8 @@ let lasttileid=-1;
 let pointerdn=false;
 let moves = 10;
 let score = 0;
+let tilelets = [];
+let roller = RNG(makeSeed(locDateInt));
 
 //let utcDate = new Date();
 let locDate = new Date();
@@ -27,6 +29,10 @@ const weights = [
     0.0025, 0.0025
 ];
 
+for (let i = 0; i < 75; i++) {
+    tilelets.push(randomLetter());
+}
+
 for (let i = 0; i < 25; i++) {
     const tile = document.createElement("div");
   
@@ -34,7 +40,7 @@ for (let i = 0; i < 25; i++) {
     tile.dataset.index = i;
     tile.dataset.selected = "false";
     tile.dataset.replacement = 0;
-    tile.dataset.letter = randomLetter(i, 0);
+    tile.dataset.letter = tilelets[i];
     tile.textContent = tile.dataset.letter;
 
     board.appendChild(tile);
@@ -155,7 +161,8 @@ function stopDragging() {
                 tile.dataset.letter = " ";
                 tile.textContent = tile.dataset.letter;
             } else {
-                tile.dataset.letter =  randomLetter((Number)(tile.dataset.index), tdr);
+                let id = (Number)(tile.dataset.index);
+                tile.dataset.letter = tilelets[(tdr + 1) * 25 + id];
                 tile.textContent = tile.dataset.letter;
             }           
         }
@@ -222,8 +229,8 @@ function getColor(replac) {
     }
 }
 
-function randomLetter(index, replac) {
-    let roll = RNG(makeSeed(locDateInt, index, replac))();
+function randomLetter() {
+    let roll = roller();
     
     //let roll = Math.random();
 
@@ -278,15 +285,6 @@ const observer = new ResizeObserver(() => {
 
 observer.observe(wiptext);
 
-/*function RNG(seed) {
-    var m = 2**35 - 31
-    var a = 185852
-    var s = seed % m
-    return function () {
-        return (s = s * a % m) / m
-    }
-}*/
-
 function RNG(seed) {
     return function() {
         let t = seed += 0x6D2B79F5;
@@ -296,9 +294,9 @@ function RNG(seed) {
     };
 }
 
-function makeSeed(date, index, replac) {
+function makeSeed(date) {
     let seed = date * 374761393;
-    seed = (seed + index * 668265263) | 0;
-    seed = (seed + replac * 2246822519) | 0;
+    //seed = (seed + index * 668265263) | 0;
+    //seed = (seed + replac * 2246822519) | 0;
     return seed;
 }
