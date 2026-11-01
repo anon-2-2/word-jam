@@ -80,7 +80,8 @@ board.addEventListener("pointermove", (event) => {
         wip = wip.substring(0, wip.length - 1);
         const tile2 = document.querySelector(`#gamespace .tile[data-index="${wipids[wipids.length - 1]}"]`);
         tile2.dataset.selected = "false";
-        tile2.style.borderColor = getColor(tile2.dataset.replacement);
+        tile.style.backgroundColor = "#f3f4f0";
+        //tile2.style.borderColor = getColor(tile2.dataset.replacement);
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
 
