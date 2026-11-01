@@ -122,7 +122,6 @@ main {
     z-index: 1000;
     
     justify-content: center;
-    align-items: center;
     width: min(500px, 50dvh, 100vw);
     background: #f3f4f0;
 }
@@ -133,7 +132,6 @@ main {
     z-index: 1000;
 
     justify-content: center;
-    align-items: center;
     width: min(500px, 50dvh, 100vw);
     background: #f3f4f0;
 }
