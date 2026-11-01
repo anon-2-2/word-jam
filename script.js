@@ -223,7 +223,7 @@ function getColor(replac) {
 }
 
 function randomLetter(index, replac) {
-    let roll = RNG(makeSeed(locDateInt, index, replac));
+    let roll = RNG(makeSeed(locDateInt, index, replac))();
     
     //let roll = Math.random();
 
