@@ -9,7 +9,7 @@ let score = 0;
 
 //let utcDate = new Date();
 let locDate = new Date();
-let locDateInt = locDate.getFullYear() * 372111 + locDate.getMonth() * 3111 + locDate.getDate();
+let locDateInt = locDate.getFullYear() * 372 + locDate.getMonth() * 31 + locDate.getDate();
 
 document.querySelector("#resultspace").classList.add("hidden");
 
@@ -223,7 +223,7 @@ function getColor(replac) {
 }
 
 function randomLetter(index, replac) {
-    let roll = RNG(locDateInt + index * 2501 + replac * 41)
+    let roll = RNG(makeSeed(locDateInt, index, replac));
     
     //let roll = Math.random();
 
@@ -285,4 +285,11 @@ function RNG(seed) {
     return function () {
         return (s = s * a % m) / m
     }
+}
+
+function makeSeed(date, index, replac) {
+    let seed = date * 374761393;
+    seed = (seed + index * 668265263) | 0;
+    seed = (seed + replac * 2246822519) | 0;
+    return seed;
 }
