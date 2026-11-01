@@ -15,6 +15,8 @@ let locDate = new Date();
 let locDateInt = locDate.getFullYear() * 372 + locDate.getMonth() * 31 + locDate.getDate();
 let roller = RNG(makeSeed(locDateInt));
 
+document.querySelector("#resultspace").classList.remove("shown");
+document.querySelector("#infospace").classList.remove("shown");
 document.querySelector("#resultspace").classList.add("hidden");
 document.querySelector("#infospace").classList.add("hidden");
 
@@ -147,13 +149,16 @@ board.addEventListener("pointermove", (event) => {
 
 document.querySelector("#infobutton").addEventListener("click", () => {
     document.querySelector("#infospace").classList.remove("hidden");
+    document.querySelector("#infospace").classList.add("shown");
 });
 
 document.querySelector("#hideinfo").addEventListener("click", () => {
+    document.querySelector("#infospace").classList.remove("shown");
     document.querySelector("#infospace").classList.add("hidden");
 });
 
 document.querySelector("#hideresult").addEventListener("click", () => {
+    document.querySelector("#resultspace").classList.remove("shown");
     document.querySelector("#resultspace").classList.add("hidden");
 });
 
