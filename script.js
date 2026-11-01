@@ -134,6 +134,7 @@ function stopDragging() {
     let valid = checkWord(wip);
     console.log(valid);
 
+    let greensClear = true;
     tiles.forEach((tile) => {
         if (valid && tile.dataset.selected =="true") {
             let tdr = (Number)(tile.dataset.replacement);
@@ -154,6 +155,10 @@ function stopDragging() {
                 tile.textContent = tile.dataset.letter;
             }           
         }
+        if (tile.dataset.replacement = "0") {
+            greensClear = false;
+        }
+
         tile.dataset.selected = "false";
         tile.style.backgroundColor = "#f3f4f0";
         tile.style.borderColor = getColor(tile.dataset.replacement);
@@ -169,6 +174,9 @@ function stopDragging() {
         updateMovesText()
     }
     if (moves == 0) {
+        showResults();
+    } else if (greensClear) {
+        score += moves * 10;
         showResults();
     }
 }
