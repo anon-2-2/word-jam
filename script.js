@@ -53,7 +53,7 @@ board.addEventListener("pointerdown", (event) => {
 
     wip = tile.dataset.letter;
     tile.dataset.selected = "true";
-    tile.style.backgroundColor = "#676a51";
+    tile.style.backgroundColor = "#787975";
     lasttileid = index;
     wipids.push(index);
 
@@ -120,7 +120,7 @@ board.addEventListener("pointermove", (event) => {
 
     wip += tile.dataset.letter;
     tile.dataset.selected = "true";
-    tile.style.backgroundColor = "#676a51";
+    tile.style.backgroundColor = "#787975";
     lasttileid = index;
     wipids.push(index);
 
