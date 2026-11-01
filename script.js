@@ -346,6 +346,8 @@ function makeSeed(date) {
 
 function saveStatus() {
     console.log("saving...");
+    
+    const tiles = document.querySelectorAll("#gamespace .tile");
     let replacs = [];
     tiles.forEach((tile) => {
         let id = (Number)(tile.dataset.index);
@@ -372,6 +374,7 @@ function checkStatus() {
 
     if (savedStatus && savedStatus.date == locDate) {
         // set all tiles as appropriate
+        const tiles = document.querySelectorAll("#gamespace .tile");
         tiles.forEach((tile) => {
             let id = (Number)(tile.dataset.index);
             tile.dataset.replacement = savedStatus.replacs[id];
