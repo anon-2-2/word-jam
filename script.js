@@ -34,6 +34,8 @@ for (let i = 0; i < 75; i++) {
 }
 
 for (let i = 0; i < 25; i++) {
+    console.log(i);
+    
     const tile = document.createElement("div");
   
     tile.className = "tile";
@@ -66,9 +68,6 @@ board.addEventListener("pointerdown", (event) => {
     tile.style.backgroundColor = "#787975";
     lasttileid = index;
     wipids.push(index);
-
-    //console.log(`Tile ${index}, row ${row}, column ${col}`);
-    //console.log(`WIP: ${wip}`);
 
     updateWIPText();
 });
@@ -142,7 +141,6 @@ function stopDragging() {
     const tiles = document.querySelectorAll("#gamespace .tile");
 
     let valid = checkWord(wip);
-    console.log(valid);
 
     let greensClear = true;
     tiles.forEach((tile) => {
@@ -244,9 +242,7 @@ function randomLetter() {
 }
 
 function fitText(element, maxSize=24, minSize=8) {
-    console.log(maxSize);
     let size = Math.min(Math.floor(parseFloat(maxSize)), 28);
-    console.log(size);
     element.style.fontSize = size + "px";
 
     while (
@@ -256,7 +252,6 @@ function fitText(element, maxSize=24, minSize=8) {
         size--;
         element.style.fontSize = size + "px";
     }
-    console.log(size);
 }
 
 function updateWIPText() {
