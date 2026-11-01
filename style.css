@@ -126,6 +126,8 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     background: #f3f4f0;
+    aspect-ratio: 1;
+    margin: 0 auto;
 }
 
 #infospace {
@@ -138,6 +140,8 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     background: #f3f4f0;
+    aspect-ratio: 1;
+    margin: 0 auto;
 }
 
 .hidden {
