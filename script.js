@@ -7,11 +7,11 @@ let pointerdn=false;
 let moves = 10;
 let score = 0;
 let tilelets = [];
-let roller = RNG(makeSeed(locDateInt));
 
 //let utcDate = new Date();
 let locDate = new Date();
 let locDateInt = locDate.getFullYear() * 372 + locDate.getMonth() * 31 + locDate.getDate();
+let roller = RNG(makeSeed(locDateInt));
 
 document.querySelector("#resultspace").classList.add("hidden");
 
