@@ -159,7 +159,7 @@ function stopDragging() {
                 tile.textContent = tile.dataset.letter;
             }           
         }
-        if (tile.dataset.replacement = "0") {
+        if (tile.dataset.replacement == "0") {
             greensClear = false;
         }
 
