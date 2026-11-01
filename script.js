@@ -8,6 +8,7 @@ let moves = 10;
 let score = 0;
 let tilelets = [];
 let won=false;
+let gameover=false;
 
 //let utcDate = new Date();
 let locDate = new Date();
@@ -52,6 +53,7 @@ for (let i = 0; i < 25; i++) {
 
 board.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return; // Ignore right-click etc.
+    if (gameover) return;
     event.preventDefault();
     
     console.log("pointer down");
@@ -78,6 +80,7 @@ board.addEventListener("pointerdown", (event) => {
 
 board.addEventListener("pointermove", (event) => {
     if (!pointerdn) return;
+    if (gameover) return;
 
     console.log("pointer move");
 
@@ -202,11 +205,11 @@ function stopDragging() {
         moves -= 1;
         updateMovesText()
     }
-    if (moves == 0) {
-        showResults();
-    } else if (greensClear) {
+    if (greensClear) {
         score += moves * 10;
         won = true;
+        showResults();
+    } else if (moves == 0) {
         showResults();
     }
 }
@@ -239,7 +242,7 @@ function showResults() {
     } else {
         rsh1.textContent = "BETTER LUCK NEXT TIME";
     }
-    rsdiv.textContent = "score: " + score + "\n" + moves + " moves left"
+    rsdiv.textContent = "score: " + score + "<br><br>" + moves + " moves left"
     
     document.querySelector("#resultspace").classList.remove("hidden");
 }
