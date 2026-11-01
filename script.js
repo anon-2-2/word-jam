@@ -7,6 +7,10 @@ let pointerdn=false;
 let moves = 10;
 let score = 0;
 
+//let utcDate = new Date();
+let locDate = new Date();
+let locDateInt = locDate.getFullYear() * 372111 + locDate.getMonth() * 3111 + locDate.getDate();
+
 document.querySelector("#resultspace").classList.add("hidden");
 
 const letters = [
@@ -30,7 +34,7 @@ for (let i = 0; i < 25; i++) {
     tile.dataset.index = i;
     tile.dataset.selected = "false";
     tile.dataset.replacement = 0;
-    tile.dataset.letter = randomLetter();
+    tile.dataset.letter = randomLetter(i, 0);
     tile.textContent = tile.dataset.letter;
 
     board.appendChild(tile);
@@ -151,7 +155,7 @@ function stopDragging() {
                 tile.dataset.letter = " ";
                 tile.textContent = tile.dataset.letter;
             } else {
-                tile.dataset.letter =  randomLetter();
+                tile.dataset.letter =  randomLetter((Number)(tile.dataset.index), tdr);
                 tile.textContent = tile.dataset.letter;
             }           
         }
@@ -218,8 +222,10 @@ function getColor(replac) {
     }
 }
 
-function randomLetter() {
-    let roll = Math.random();
+function randomLetter(index, replac) {
+    let roll = RNG(locDateInt + index * 2501 + replac * 41)
+    
+    //let roll = Math.random();
 
     let idx = 0;
     for (const weight of weights) {
@@ -271,3 +277,12 @@ const observer = new ResizeObserver(() => {
 });
 
 observer.observe(wiptext);
+
+function RNG(seed) {
+    var m = 2**35 - 31
+    var a = 185852
+    var s = seed % m
+    return function () {
+        return (s = s * a % m) / m
+    }
+}
