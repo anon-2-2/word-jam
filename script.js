@@ -253,6 +253,7 @@ function showResults() {
     
     document.querySelector("#resultspace").classList.remove("hidden");
 
+    showResultsButton();
     saveStatus();
 }
 
@@ -377,8 +378,8 @@ function checkStatus() {
         const tiles = document.querySelectorAll("#gamespace .tile");
         tiles.forEach((tile) => {
             let id = (Number)(tile.dataset.index);
-            tile.dataset.replacement = savedStatus.replacs[id];
-            tile.dataset.letter = tilelets[savedStatus.replacs[id] * 25 + id];
+            tile.dataset.replacement = savedStatus.reps[id];
+            tile.dataset.letter = tilelets[savedStatus.reps[id] * 25 + id];
         });
 
         gameover = savedStatus.over;
@@ -387,4 +388,16 @@ function checkStatus() {
         moves = savedStatus.moves;
         console.log("status fixed");
     }
+
+    if (gameover) {
+        showResultsButton();
+    }
+}
+
+function showResultsButton() {
+    document.querySelector("#scorespace").innerHTML = `<button id="showresult" style="border-color:black; border-width:1px">show results</button>`;
+    document.querySelector("#showresult").addEventListener("click", () => {
+        document.querySelector("#resultspace").classList.remove("hidden");
+        document.querySelector("#resultspace").classList.add("shown");
+    });
 }
