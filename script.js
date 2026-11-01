@@ -53,6 +53,8 @@ for (let i = 0; i < 25; i++) {
     board.appendChild(tile);
 }
 
+checkStatus();
+
 board.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return; // Ignore right-click etc.
     if (gameover) return;
@@ -206,6 +208,8 @@ function stopDragging() {
     updateWIPText();
     updateScoreText();
 
+    saveStatus();
+
     if (valid) {
         moves -= 1;
         updateMovesText()
@@ -250,6 +254,8 @@ function showResults() {
     rsdiv.textContent = "score: " + score + "<br><br>" + moves + " moves left"
     
     document.querySelector("#resultspace").classList.remove("hidden");
+
+    saveStatus();
 }
 
 function getColor(replac) {
@@ -338,4 +344,42 @@ function makeSeed(date) {
     //seed = (seed + index * 668265263) | 0;
     //seed = (seed + replac * 2246822519) | 0;
     return seed;
+}
+
+function saveStatus() {
+    let replacs = [];
+    tiles.forEach((tile) => {
+        let id = (Number)(tile.dataset.index);
+        let rep = (Number)(tile.dataset.replacement);
+        replacs[id] = rep;
+    });
+    
+    const status = {
+        date: locDate,
+        score: score,
+        moves: moves,
+        over: gameover,
+        won: won,
+        reps: replacs
+    };
+
+    localStorage.setItem("dailyPuzzle", JSON.stringify(status));
+}
+
+function checkStatus() {
+    const savedStatus = JSON.parse(localStorage.getItem("dailyPuzzle"));
+
+    if (savedStatus && savedStatus.date == locDate) {
+        // set all tiles as appropriate
+        tiles.forEach((tile) => {
+            let id = (Number)(tile.dataset.index);
+            tile.dataset.replacement = savedStatus.replacs[id];
+            tile.dataset.letter = tilelets[savedStatus.replacs[id] * 25 + id];
+        });
+
+        gameover = savedStatus.over;
+        won = savedStatus.won;
+        score = savedStatus.score;
+        moves = savedStatus.moves;
+    }
 }
