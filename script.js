@@ -5,6 +5,7 @@ let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
 let moves = 10;
+let score = 0;
 
 document.querySelector("#resultspace").classList.add("hidden");
 
@@ -79,7 +80,7 @@ board.addEventListener("pointermove", (event) => {
         wip = wip.substring(0, wip.length - 1);
         const tile2 = document.querySelector(`#gamespace .tile[data-index="${wipids[wipids.length - 1]}"]`);
         tile2.dataset.selected = "false";
-        tile2.style.backgroundColor = getColor(tile2.dataset.replacement);
+        tile2.style.borderColor = getColor(tile2.dataset.replacement);
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
 
@@ -134,7 +135,16 @@ function stopDragging() {
 
     tiles.forEach((tile) => {
         if (valid && tile.dataset.selected =="true") {
-            tile.dataset.replacement = (Number)(tile.dataset.replacement) + 1;
+            let tdr = (Number)(tile.dataset.replacement);
+            if (tdr == 0) {
+                score += 3;
+            } else if (tdr == 1) {
+                score += 2;
+            } else if (tdr == 2) {
+                score += 1;
+            }
+
+            tile.dataset.replacement = tdr + 1;
             if (tile.dataset.replacement == 3) {
                 tile.dataset.letter = " ";
                 tile.textContent = tile.dataset.letter;
@@ -144,7 +154,7 @@ function stopDragging() {
             }           
         }
         tile.dataset.selected = "false";
-        tile.style.backgroundColor = getColor(tile.dataset.replacement);
+        tile.style.borderColor = getColor(tile.dataset.replacement);
     });
 
     lasttileid = -1;
@@ -184,16 +194,16 @@ function showResults() {
 
 function getColor(replac) {
     if (replac == 0) {
-        return "#91b367";
+        return "#426f0f";
     }
     else if (replac == 1) {
-        return "#d1c982";
+        return "#d4c32b";
     }
     else if (replac == 2) {
-        return "#d88172";
+        return "#ad311b";
     }
     else {
-        return "#7c7c7c";
+        return "#f3f4f0";
     }
 }
 
@@ -237,7 +247,12 @@ function updateWIPText() {
 
 function updateMovesText() {
     const movesh1 = document.querySelector("#movesdisplay").querySelector("h1");
-    movesh1.textContent = moves + "moves";
+    movesh1.textContent = moves + " moves";
+}
+
+function updateScoreText() {
+    const scoreh1 = document.querySelector("#scoredisplay").querySelector("h1");
+    scoreh1.textContent = "score " + score;
 }
 
 const observer = new ResizeObserver(() => {

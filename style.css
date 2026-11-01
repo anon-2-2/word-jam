@@ -1,8 +1,8 @@
 :root {
-    --t1-color: #91b367;
-    --t2-color: #d1c982;
-    --t3-color: #d88172;
-    --td-color: #7c7c7c;
+    --t1-color: #426f0f;
+    --t2-color: #d4c32b;
+    --t3-color: #ad311b;
+    --td-color: #f3f4f0;
 }
 
 * {
@@ -14,7 +14,7 @@ body {
     height: 100dvh;
     display: grid;
     place-items: center;
-    background: #e5e2ce;
+    background: #f3f4f0;
     color: #1b270d;
     font-family: system-ui, sans-serif;
 }
@@ -27,7 +27,7 @@ button {
     text-align: center;
     border: 0;
     padding: 12pt 12pt;
-    background: #e5e2ce;
+    background: #f3f4f0;
     color: #1b270d;
     cursor: pointer;
 }
@@ -123,7 +123,7 @@ main {
     
     justify-content: center;
     align-items: center;
-    background: #e5e2ce;
+    background: #f3f4f0;
 }
 
 .hidden {
@@ -134,8 +134,8 @@ main {
     display: grid;
     place-items: center;
 
-    background: #91b367;
-    border: 1px solid #1b270d;
+    background: #f3f4f0;
+    border: 8px solid #426f0f;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
     user-select: none;
