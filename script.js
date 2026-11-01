@@ -54,6 +54,8 @@ board.addEventListener("pointerdown", (event) => {
     if (event.button !== 0) return; // Ignore right-click etc.
     event.preventDefault();
     
+    console.log("pointer down");
+    
     const tile = event.target.closest(".tile");
     if (!tile) return;
 
@@ -76,6 +78,8 @@ board.addEventListener("pointerdown", (event) => {
 
 board.addEventListener("pointermove", (event) => {
     if (!pointerdn) return;
+
+    console.log("pointer move");
 
     const element = document.elementFromPoint(event.clientX, event.clientY);
     const tile = element?.closest(".tile");
@@ -151,6 +155,8 @@ document.querySelector("#hideresult").addEventListener("click", () => {
 });
 
 function stopDragging() {
+    console.log("stopping drag");
+    
     pointerdn = false;
     const tiles = document.querySelectorAll("#gamespace .tile");
 
