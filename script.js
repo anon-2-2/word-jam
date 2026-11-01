@@ -379,13 +379,17 @@ function checkStatus() {
         tiles.forEach((tile) => {
             let id = (Number)(tile.dataset.index);
             tile.dataset.replacement = savedStatus.reps[id];
+            tile.style.borderColor = getColor(tile.dataset.replacement);
             tile.dataset.letter = tilelets[savedStatus.reps[id] * 25 + id];
+            tile.textContent = tile.dataset.letter;
         });
 
         gameover = savedStatus.over;
         won = savedStatus.won;
         score = savedStatus.score;
         moves = savedStatus.moves;
+        updateMovesText();
+        updateScoreText();
         console.log("status fixed");
     }
 
