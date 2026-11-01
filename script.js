@@ -356,7 +356,7 @@ function saveStatus() {
     });
     
     const status = {
-        date: locDate,
+        date: locDateInt,
         score: score,
         moves: moves,
         over: gameover,
@@ -372,7 +372,7 @@ function checkStatus() {
     console.log("checking saved");
     const savedStatus = JSON.parse(localStorage.getItem("dailyPuzzle"));
 
-    if (savedStatus && savedStatus.date == locDate) {
+    if (savedStatus && savedStatus.date == locDateInt) {
         // set all tiles as appropriate
         const tiles = document.querySelectorAll("#gamespace .tile");
         tiles.forEach((tile) => {
