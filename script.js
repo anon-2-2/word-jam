@@ -7,6 +7,7 @@ let pointerdn=false;
 let moves = 10;
 let score = 0;
 let tilelets = [];
+let won=false;
 
 //let utcDate = new Date();
 let locDate = new Date();
@@ -14,6 +15,7 @@ let locDateInt = locDate.getFullYear() * 372 + locDate.getMonth() * 31 + locDate
 let roller = RNG(makeSeed(locDateInt));
 
 document.querySelector("#resultspace").classList.add("hidden");
+document.querySelector("#infospace").classList.add("hidden");
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
@@ -136,6 +138,18 @@ board.addEventListener("pointermove", (event) => {
     updateWIPText();
 });
 
+document.querySelector("#infobutton").addEventListener("click", () => {
+    document.querySelector("#infospace").classList.remove("hidden");
+});
+
+document.querySelector("#hideinfo").addEventListener("click", () => {
+    document.querySelector("#infospace").classList.add("hidden");
+});
+
+document.querySelector("#hideresult").addEventListener("click", () => {
+    document.querySelector("#resultspace").classList.add("hidden");
+});
+
 function stopDragging() {
     pointerdn = false;
     const tiles = document.querySelectorAll("#gamespace .tile");
@@ -186,6 +200,7 @@ function stopDragging() {
         showResults();
     } else if (greensClear) {
         score += moves * 10;
+        won = true;
         showResults();
     }
 }
@@ -209,6 +224,17 @@ function checkWord(word) {
 }
 
 function showResults() {
+    let rs = document.querySelector("#resultspace");
+    let rsh1 = rs.querySelector("h1");
+    let rsdiv = rs.querySelector("div");
+
+    if (won) {
+        rsh1.textContent = "CONGRATULATIONS";
+    } else {
+        rsh1.textContent = "BETTER LUCK NEXT TIME";
+    }
+    rsdiv.textContent = "score: " + score + "\n" + moves + " moves left"
+    
     document.querySelector("#resultspace").classList.remove("hidden");
 }
 
@@ -266,7 +292,11 @@ function updateWIPText() {
 
 function updateMovesText() {
     const movesh1 = document.querySelector("#movesdisplay").querySelector("h1");
-    movesh1.textContent = moves + " moves";
+    if (moves == 1) {
+        movesh1.textContent = "1 move";
+    } else {
+        movesh1.textContent = moves + " moves";
+    }
 }
 
 function updateScoreText() {

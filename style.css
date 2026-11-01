@@ -126,6 +126,16 @@ main {
     background: #f3f4f0;
 }
 
+#infospace {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    justify-content: center;
+    align-items: center;
+    background: #f3f4f0;
+}
+
 .hidden {
     display: none;
 }
@@ -135,8 +145,8 @@ main {
     place-items: center;
 
     background: #f3f4f0;
-    border: 6px solid #426f0f;
-    border-radius: 10px;
+    border: 3px solid #426f0f;
+    border-radius: 7px;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
     user-select: none;
