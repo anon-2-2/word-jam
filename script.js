@@ -39,8 +39,6 @@ for (let i = 0; i < 75; i++) {
 }
 
 for (let i = 0; i < 25; i++) {
-    console.log(i);
-    
     const tile = document.createElement("div");
   
     tile.className = "tile";
@@ -60,7 +58,7 @@ board.addEventListener("pointerdown", (event) => {
     if (gameover) return;
     event.preventDefault();
     
-    console.log("pointer down");
+    //console.log("pointer down");
     
     const tile = event.target.closest(".tile");
     if (!tile) return;
@@ -86,7 +84,7 @@ board.addEventListener("pointermove", (event) => {
     if (!pointerdn) return;
     if (gameover) return;
 
-    console.log("pointer move");
+    //console.log("pointer move");
 
     const element = document.elementFromPoint(event.clientX, event.clientY);
     const tile = element?.closest(".tile");
@@ -165,7 +163,7 @@ document.querySelector("#hideresult").addEventListener("click", () => {
 });
 
 function stopDragging() {
-    console.log("stopping drag");
+    //console.log("stopping drag");
     
     pointerdn = false;
     const tiles = document.querySelectorAll("#gamespace .tile");
@@ -347,6 +345,7 @@ function makeSeed(date) {
 }
 
 function saveStatus() {
+    console.log("saving...");
     let replacs = [];
     tiles.forEach((tile) => {
         let id = (Number)(tile.dataset.index);
@@ -364,9 +363,11 @@ function saveStatus() {
     };
 
     localStorage.setItem("dailyPuzzle", JSON.stringify(status));
+    console.log("saved");
 }
 
 function checkStatus() {
+    console.log("checking saved");
     const savedStatus = JSON.parse(localStorage.getItem("dailyPuzzle"));
 
     if (savedStatus && savedStatus.date == locDate) {
@@ -381,5 +382,6 @@ function checkStatus() {
         won = savedStatus.won;
         score = savedStatus.score;
         moves = savedStatus.moves;
+        console.log("status fixed");
     }
 }
