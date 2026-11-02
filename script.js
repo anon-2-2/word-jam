@@ -80,7 +80,7 @@ for (let i = 0; i < qs.length; i++) {
     let choice = Math.floor(roller() * (opts.length - 0.000001));
     while (qs.includes(opts[choice], 0))
         choice = Math.floor(roller() * (opts.length - 0.000001));
-    console.log(choice + "/" + opts.length + ":" + opts[choice]);
+    //console.log(choice + "/" + opts.length + ":" + opts[choice]);
     if (i < us.length) {
         // grab an existing u and put it next to a q
         tilelets[us[i]] = tilelets[opts[choice]];
@@ -216,6 +216,35 @@ document.querySelector("#hideinfo").addEventListener("click", () => {
 document.querySelector("#hideresult").addEventListener("click", () => {
     document.querySelector("#resultspace").classList.remove("shown");
     document.querySelector("#resultspace").classList.add("hidden");
+});
+
+document.querySelector("#copyresult").addEventListener("click", () => {
+    let txt = "Palim " + (date.getMonth + 1) + "/" + (date.getDate + 1) + "\n";
+    txt = txt + "\n";
+    let replacs = [];
+    tiles.forEach((tile) => {
+        let id = (Number)(tile.dataset.index);
+        let rep = (Number)(tile.dataset.replacement);
+        replacs[id] = rep;
+    });
+    for (let i = 0; i < 5; i++) {
+        for (let j = 0; j < 5; j++) {
+            if (replacs[i*5 + j] == 0) {
+                txt = txt + "🟩";
+            } else if (replacs[i * 5 + j] == 1) {
+                txt = txt + "🟨";
+            } else if (replacs[i * 5 + j] == 2) {
+                txt = txt + "🟥";
+            } else if (replacs[i * 5 + j] == 1) {
+                txt = txt + "⬛";
+            }
+        }
+        txt = txt + "\n";
+    }
+    txt = txt + "\n";
+    txt = txt + "Score: " + score + "\n";
+    txt = txt + "playpalim.com"
+    navigator.clipboard.writeText(txt);
 });
 
 function stopDragging() {
@@ -416,7 +445,7 @@ function makeSeed(date) {
 }
 
 function saveStatus() {
-    console.log("saving...");
+    //console.log("saving...");
     
     const tiles = document.querySelectorAll("#gamespace .tile");
     let replacs = [];
@@ -436,11 +465,11 @@ function saveStatus() {
     };
 
     localStorage.setItem("dailyPuzzle", JSON.stringify(status));
-    console.log("saved");
+    //console.log("saved");
 }
 
 function checkStatus() {
-    console.log("checking saved");
+    //console.log("checking saved");
     const savedStatus = JSON.parse(localStorage.getItem("dailyPuzzle"));
 
     if (savedStatus && savedStatus.date == locDateInt) {
@@ -464,11 +493,12 @@ function checkStatus() {
         moves = savedStatus.moves;
         updateMovesText();
         updateScoreText();
-        console.log("status fixed");
+        //console.log("status fixed");
     }
 
     if (gameover) {
         showResultsButton();
+        showResults();
     }
 }
 
