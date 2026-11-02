@@ -94,8 +94,8 @@ main {
     opacity: 1;
     color: #71716e;
     transition-property: opacity;
-    transition-duration: 2s;
-    transition-delay: 2.5s;
+    transition-duration: 1.5s;
+    transition-delay: 2s;
 }
 
 #wiptext.inprog {
