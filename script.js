@@ -19,7 +19,7 @@ document.querySelector("#resultspace").classList.remove("shown");
 document.querySelector("#infospace").classList.remove("shown");
 document.querySelector("#resultspace").classList.add("hidden");
 document.querySelector("#infospace").classList.add("hidden");
-wip.classList.add("named");
+wiptext.classList.add("named");
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
