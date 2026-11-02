@@ -242,7 +242,7 @@ document.querySelector("#copyresult").addEventListener("click", () => {
         txt = txt + "\n";
     }
     txt = txt + "\n";
-    txt = txt + "Score: " + score + "\n";
+    txt = txt + "Scored " + score + " in " + (10 - moves) + " moves\n";
     txt = txt + "playpalim.com"
     navigator.clipboard.writeText(txt);
 });
@@ -342,7 +342,7 @@ function showResults() {
     } else {
         rsh1.textContent = "BETTER LUCK NEXT TIME";
     }
-    rsdiv.textContent = "score: " + score + "\n" + moves + " moves left\n"
+    rsdiv.textContent = "score: " + score + "\n\n" + moves + " moves left\n"
     
     document.querySelector("#resultspace").classList.remove("hidden");
 
