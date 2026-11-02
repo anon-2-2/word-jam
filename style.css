@@ -84,8 +84,8 @@ main {
     line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     
     transition-property: opacity; 
-    transition-duration: 1s;
-    transition-delay: 1s;
+    transition-duration: 2s;
+    transition-delay: 2.5s;
 }
 
 #wiptext.named {
