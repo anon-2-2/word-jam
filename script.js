@@ -130,6 +130,7 @@ board.addEventListener("pointerdown", (event) => {
     wipids.push(index);
 
     wiptext.classList.remove("named");
+    wiptext.offsetHeight;
     wiptext.classList.add("inprog");
     updateWIPText();
 });
