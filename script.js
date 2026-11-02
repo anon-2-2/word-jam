@@ -79,11 +79,12 @@ for (let i = 0; i < qs.length; i++) {
     let choice = Math.floor(roller() * (opts.length - 0.000001));
     while (qs.includes(opts[choice], 0))
         choice = Math.floor(roller() * (opts.length - 0.000001));
+    console.log(choice + "/" + opts.length);
     if (i < us.length) {
         // grab an existing u and put it next to a q
         tilelets[us[i]] = tilelets[choice];
     } // else make a u
-    tilelets[choice] = "U";
+    tilelets[choice] = 'U';
 }
 
 for (let i = 0; i < 25; i++) {
