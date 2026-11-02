@@ -356,12 +356,20 @@ function fitText(element, maxSize=24, minSize=8) {
 }
 
 function updateWIPText() {
-    let printwip = wip.substring(0,1);
-    for (let i = 1; i < wip.length; i++) {
-        printwip += " " + wip.substring(i,i+1);
-    }
+    
     const wiph1 = wiptext.querySelector("h1");
-    wiph1.textContent = printwip;
+    
+    if (wip == "") {
+        wiph1.textContent = "LETTERLAYER"
+        wiph1.style.color = "#71716e";
+    } else {
+        let printwip = wip.substring(0,1);
+        for (let i = 1; i < wip.length; i++) {
+            printwip += " " + wip.substring(i,i+1);
+        }
+        wiph1.textContent = printwip;
+        wiph1.style.color = "#000000";
+    }
     fitText(wiph1, getComputedStyle(document.querySelector(".tile")).fontSize, 8);
 }
 
