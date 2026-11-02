@@ -83,18 +83,18 @@ main {
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     
+    opacity: 0;
     transition-property: opacity; 
-    transition-duration: 2s;
-    transition-delay: 2.5s;
+    transition-delay: 0s;
+    transition-duration: 0s;
+    color: #71716e;
 }
 
 #wiptext.named {
     opacity: 1;
     color: #71716e;
-}
-
-#wiptext.nocontent {
-    opacity: 0;
+    transition-duration: 2s;
+    transition-delay: 2.5s;
 }
 
 #wiptext.inprog {

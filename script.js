@@ -19,6 +19,7 @@ document.querySelector("#resultspace").classList.remove("shown");
 document.querySelector("#infospace").classList.remove("shown");
 document.querySelector("#resultspace").classList.add("hidden");
 document.querySelector("#infospace").classList.add("hidden");
+wip.classList.add("named");
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
@@ -129,7 +130,6 @@ board.addEventListener("pointerdown", (event) => {
     wipids.push(index);
 
     wiptext.classList.remove("named");
-    wiptext.classList.remove("nocontent");
     wiptext.classList.add("inprog");
     updateWIPText();
 });
@@ -260,8 +260,6 @@ function stopDragging() {
     wip = "";
 
     wiptext.classList.remove("inprog");
-    wiptext.classList.add("nocontent");
-    wiptext.classList.remove("nocontent");
     wiptext.classList.add("named");
     updateWIPText();
     updateScoreText();
