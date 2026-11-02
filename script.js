@@ -260,6 +260,7 @@ function stopDragging() {
     wip = "";
 
     wiptext.classList.remove("inprog");
+    wiptext.offsetHeight;
     wiptext.classList.add("named");
     updateWIPText();
     updateScoreText();
@@ -366,7 +367,7 @@ function updateWIPText() {
     const wiph1 = wiptext.querySelector("h1");
     
     if (wip == "") {
-        wiph1.textContent = "LETTERLAYER"
+        wiph1.textContent = "P A L I M"
     } else {
         let printwip = wip.substring(0,1);
         for (let i = 1; i < wip.length; i++) {
