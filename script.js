@@ -38,6 +38,54 @@ for (let i = 0; i < 75; i++) {
     tilelets.push(randomLetter());
 }
 
+// trade a u next to q
+let qs = [];
+let us = [];
+for (let i = 0; i < 75; i++) {
+    if (tilelets[i] == 'Q')
+        qs.push(i);
+    if (tilelets[i] == 'U')
+        us.push(i);
+}
+
+for (let i = 0; i < qs.length; i++) {
+    let qi = qs[i];
+    let opts = [];
+    if (qi > 4) {
+        opts.push(qi-5);
+        if (qi % 5 > 0) {
+            opts.push(qi-6);
+        }
+        if (qi % 5 < 4) {
+            opts.push(qi-4);
+        }
+    }
+    if (qi % 5 > 0) {
+        opts.push(qi-1);
+    }
+    if (qi % 5 < 4) {
+        opts.push(qi+1);
+    }
+    if (qi < 20) {
+        opts.push(qi+5);
+        if (qi % 5 > 0) {
+            opts.push(qi+4);
+        }
+        if (qi % 5 < 4) {
+            opts.push(qi+6);
+        }
+    }
+    
+    let choice = Math.floor(roller() * (opts.length - 0.000001));
+    while (qs.includes(opts[choice], 0))
+        choice = Math.floor(roller() * (opts.length - 0.000001));
+    if (i < us.length) {
+        // grab an existing u and put it next to a q
+        tilelets[us[i]] = tilelets[choice];
+    } // else make a u
+    tilelets[choice] = "U";
+}
+
 for (let i = 0; i < 25; i++) {
     const tile = document.createElement("div");
   
@@ -256,7 +304,7 @@ function showResults() {
     } else {
         rsh1.textContent = "BETTER LUCK NEXT TIME";
     }
-    rsdiv.textContent = "score: " + score + "\n\n" + moves + " moves left"
+    rsdiv.textContent = "score: " + score + "\n" + moves + " moves left\n"
     
     document.querySelector("#resultspace").classList.remove("hidden");
 
