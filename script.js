@@ -82,9 +82,9 @@ for (let i = 0; i < qs.length; i++) {
     console.log(choice + "/" + opts.length);
     if (i < us.length) {
         // grab an existing u and put it next to a q
-        tilelets[us[i]] = tilelets[choice];
+        tilelets[us[i]] = tilelets[opts[choice]];
     } // else make a u
-    tilelets[choice] = 'U';
+    tilelets[opts[choice]] = 'U';
 }
 
 for (let i = 0; i < 25; i++) {
