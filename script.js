@@ -128,6 +128,9 @@ board.addEventListener("pointerdown", (event) => {
     lasttileid = index;
     wipids.push(index);
 
+    wiptext.classList.remove("named");
+    wiptext.classList.remove("nocontent");
+    wiptext.classList.add("inprog");
     updateWIPText();
 });
 
@@ -255,6 +258,11 @@ function stopDragging() {
 
     lasttileid = -1;
     wip = "";
+
+    wiptext.classList.remove("inprog");
+    wiptext.classList.add("nocontent");
+    wiptext.classList.remove("nocontent");
+    wiptext.classList.add("named");
     updateWIPText();
     updateScoreText();
 
@@ -361,14 +369,12 @@ function updateWIPText() {
     
     if (wip == "") {
         wiph1.textContent = "LETTERLAYER"
-        wiph1.style.color = "#71716e";
     } else {
         let printwip = wip.substring(0,1);
         for (let i = 1; i < wip.length; i++) {
             printwip += " " + wip.substring(i,i+1);
         }
         wiph1.textContent = printwip;
-        wiph1.style.color = "#000000";
     }
     fitText(wiph1, getComputedStyle(document.querySelector(".tile")).fontSize, 8);
 }

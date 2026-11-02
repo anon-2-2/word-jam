@@ -82,6 +82,26 @@ main {
     width: min(399px, calc((50dvh - 24px) * 4 / 5 + 18px), calc((100vw - 24px) * 4 / 5 + 18px));
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+    
+    transition-property: opacity; 
+    transition-duration: 1s;
+    transition-delay: 1s;
+}
+
+#wiptext.named {
+    opacity: 1;
+    color: #71716e;
+}
+
+#wiptext.nocontent {
+    opacity: 0;
+}
+
+#wiptext.inprog {
+    opacity: 1;
+    color: black;
+    transition-delay: 0s;
+    transition-duration: 0s;
 }
 
 #infobutton {
