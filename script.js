@@ -60,6 +60,8 @@ board.addEventListener("pointerdown", (event) => {
     
     //console.log("pointer down");
     
+    wipids = [];
+
     const tile = event.target.closest(".tile");
     if (!tile) return;
 
@@ -93,6 +95,7 @@ board.addEventListener("pointermove", (event) => {
     if (tile.dataset.replacement == 3) return;
 
     const index = Number(tile.dataset.index);
+    if (index == lasttileid) return;
     const row = Math.floor(index / 5);
     const col = index % 5;
 
@@ -206,8 +209,6 @@ function stopDragging() {
     updateWIPText();
     updateScoreText();
 
-    saveStatus();
-
     if (valid) {
         moves -= 1;
         updateMovesText()
@@ -215,9 +216,15 @@ function stopDragging() {
     if (greensClear) {
         score += moves * 10;
         won = true;
+        gameover = true;
+        saveStatus();
         showResults();
     } else if (moves == 0) {
+        gameover = true;
+        saveStatus();
         showResults();
+    } else {
+        saveStatus();
     }
 }
 
