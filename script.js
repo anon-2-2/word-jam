@@ -249,7 +249,7 @@ function showResults() {
     } else {
         rsh1.textContent = "BETTER LUCK NEXT TIME";
     }
-    rsdiv.textContent = "score: " + score + "<br><br>" + moves + " moves left"
+    rsdiv.textContent = "score: " + score + "\n\n" + moves + " moves left"
     
     document.querySelector("#resultspace").classList.remove("hidden");
 
@@ -380,7 +380,11 @@ function checkStatus() {
             let id = (Number)(tile.dataset.index);
             tile.dataset.replacement = savedStatus.reps[id];
             tile.style.borderColor = getColor(tile.dataset.replacement);
-            tile.dataset.letter = tilelets[savedStatus.reps[id] * 25 + id];
+
+            if (savedStatus.reps[id] < 3) 
+                tile.dataset.letter = tilelets[savedStatus.reps[id] * 25 + id];
+            else
+                tile.dataset.letter = " ";
             tile.textContent = tile.dataset.letter;
         });
 
@@ -399,7 +403,7 @@ function checkStatus() {
 }
 
 function showResultsButton() {
-    document.querySelector("#scorespace").innerHTML = `<button id="showresult" style="border-color:black; border-width:1px">show results</button>`;
+    document.querySelector("#scorespace").innerHTML = `<button id="showresult" style="border-color:black; border-width:1px; border-style:solid">show results</button>`;
     document.querySelector("#showresult").addEventListener("click", () => {
         document.querySelector("#resultspace").classList.remove("hidden");
         document.querySelector("#resultspace").classList.add("shown");
