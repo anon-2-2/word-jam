@@ -218,7 +218,7 @@ document.querySelector("#hideresult").addEventListener("click", () => {
     document.querySelector("#resultspace").classList.add("hidden");
 });
 
-document.querySelector("#copyresult").addEventListener("click", () => {
+/*document.querySelector("#copyresult").addEventListener("click", () => {
     let txt = "Palim " + (date.getMonth + 1) + "/" + (date.getDate + 1) + "\n";
     txt = txt + "\n";
     let replacs = [];
@@ -245,6 +245,15 @@ document.querySelector("#copyresult").addEventListener("click", () => {
     txt = txt + "Scored " + score + " in " + (10 - moves) + " moves\n";
     txt = txt + "playpalim.com"
     navigator.clipboard.writeText(txt);
+});*/
+
+document.querySelector("#copyresult").addEventListener("click", async () => {
+    try {
+        await navigator.clipboard.writeText("Test copy");
+        console.log("Copy successful");
+    } catch (err) {
+        console.error("Clipboard error:", err);
+    }
 });
 
 function stopDragging() {
