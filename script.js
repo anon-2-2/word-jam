@@ -218,7 +218,7 @@ document.querySelector("#hideresult").addEventListener("click", () => {
     document.querySelector("#resultspace").classList.add("hidden");
 });
 
-/*document.querySelector("#copyresult").addEventListener("click", () => {
+document.querySelector("#copyresult").addEventListener("click", async () => {
     let txt = "Palim " + (date.getMonth + 1) + "/" + (date.getDate + 1) + "\n";
     txt = txt + "\n";
     let replacs = [];
@@ -244,12 +244,9 @@ document.querySelector("#hideresult").addEventListener("click", () => {
     txt = txt + "\n";
     txt = txt + "Scored " + score + " in " + (10 - moves) + " moves\n";
     txt = txt + "playpalim.com"
-    navigator.clipboard.writeText(txt);
-});*/
-
-document.querySelector("#copyresult").addEventListener("click", async () => {
+    
     try {
-        await navigator.clipboard.writeText("Test copy");
+        await navigator.clipboard.writeText(txt);
         console.log("Copy successful");
     } catch (err) {
         console.error("Clipboard error:", err);
@@ -259,6 +256,8 @@ document.querySelector("#copyresult").addEventListener("click", async () => {
 function stopDragging() {
     //console.log("stopping drag");
     
+    if (gameover) return;
+
     pointerdn = false;
     const tiles = document.querySelectorAll("#gamespace .tile");
 
