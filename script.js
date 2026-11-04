@@ -219,7 +219,7 @@ document.querySelector("#hideresult").addEventListener("click", () => {
 });
 
 document.querySelector("#copyresult").addEventListener("click", async () => {
-    let txt = "Palim " + (locDate.getMonth + 1) + "/" + (locDate.getDate + 1) + "\n";
+    let txt = "Palim " + (locDate.getMonth() + 1) + "/" + (locDate.getDate() + 1) + "\n";
     txt = txt + "\n";
     let replacs = [];
     const tiles = document.querySelectorAll("#gamespace .tile");
@@ -236,7 +236,7 @@ document.querySelector("#copyresult").addEventListener("click", async () => {
                 txt = txt + "🟨";
             } else if (replacs[i * 5 + j] == 2) {
                 txt = txt + "🟥";
-            } else if (replacs[i * 5 + j] == 1) {
+            } else if (replacs[i * 5 + j] == 3) {
                 txt = txt + "⬛";
             }
         }
