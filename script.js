@@ -222,6 +222,7 @@ document.querySelector("#copyresult").addEventListener("click", async () => {
     let txt = "Palim " + (locDate.getMonth + 1) + "/" + (locDate.getDate + 1) + "\n";
     txt = txt + "\n";
     let replacs = [];
+    const tiles = document.querySelectorAll("#gamespace .tile");
     tiles.forEach((tile) => {
         let id = (Number)(tile.dataset.index);
         let rep = (Number)(tile.dataset.replacement);
