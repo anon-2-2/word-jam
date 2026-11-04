@@ -219,7 +219,7 @@ document.querySelector("#hideresult").addEventListener("click", () => {
 });
 
 document.querySelector("#copyresult").addEventListener("click", async () => {
-    let txt = "Palim " + (date.getMonth + 1) + "/" + (date.getDate + 1) + "\n";
+    let txt = "Palim " + (locDate.getMonth + 1) + "/" + (locDate.getDate + 1) + "\n";
     txt = txt + "\n";
     let replacs = [];
     tiles.forEach((tile) => {
