@@ -39,6 +39,44 @@ for (let i = 0; i < 75; i++) {
     tilelets.push(randomLetter());
 }
 
+// make each stack have at least one each of vowel and consonant
+let vc = 0;
+for (let i = 0; i < 25; i++) {
+    let l1 = tilelets[i];
+    let l2 = tilelets[i + 25];
+    let l3 = tilelets[i + 50];
+
+    if (l1 == 'A' || l1 == 'E' || l1 == 'I' || l1 == 'O' || l1 == 'U') {
+        vc += 1;
+    }
+    if (l2 == 'A' || l2 == 'E' || l2 == 'I' || l2 == 'O' || l2 == 'U') {
+        vc += 1;
+    }
+    if (l3 == 'A' || l3 == 'E' || l3 == 'I' || l3 == 'O' || l3 == 'U') {
+        vc += 1;
+    }
+
+    if (vc == 3) {
+        // add a consonant
+        let c = Math.floor(roller() * (3 - 0.000001))
+        let nl = 'A'
+        while (nl == 'A' || nl == 'E' || nl == 'I' || nl == 'O' || nl == 'U') {
+            nl = randomLetter();
+        }
+        tilelets[i + 25 * c] = nl;
+    }
+
+    if (vc == 0) {
+        // add a vowel
+        let c = Math.floor(roller() * (3 - 0.000001))
+        let nl = 'B'
+        while (nl != 'A' && nl != 'E' && nl != 'I' && nl != 'O' && nl != 'U') {
+            nl = randomLetter();
+        }
+        tilelets[i + 25 * c] = nl;
+    }
+}
+
 // trade a u next to q
 let qs = [];
 let us = [];
@@ -351,7 +389,11 @@ function showResults() {
     } else {
         rsh1.textContent = "BETTER LUCK NEXT TIME";
     }
-    rsdiv.textContent = "score: " + score + "\n\n" + moves + " moves left\n"
+    if (moves == 1) {
+        rsdiv.textContent = "score: " + score + "\n\n1 move left\n";
+    } else {
+        rsdiv.textContent = "score: " + score + "\n\n" + moves + " moves left\n";
+    }
     
     document.querySelector("#resultspace").classList.remove("hidden");
 

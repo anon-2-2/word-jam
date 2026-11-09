@@ -147,7 +147,7 @@ main {
     align-items: center;
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(500px + (952px / 5)), calc((100dvh - 48px) / 5 + 50dvh));
+    height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
     background: #f3f4f0;
     margin: auto auto;
 }
@@ -161,7 +161,7 @@ main {
     align-items: center;
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(500px + (952px / 5)), calc((100dvh - 48px) / 5 + 50dvh));
+    height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
     background: #f3f4f0;
     margin: auto auto;
 }
