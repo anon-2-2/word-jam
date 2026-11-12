@@ -82,6 +82,8 @@ main {
     display: flex;
     position: fixed;
     top: 0;
+    left:50%;
+    transform: translateX(50%);
     align-items: center;
     margin: 0 auto;
     padding: 0 0;
@@ -90,11 +92,13 @@ main {
 }
 
 #title {
+    padding: 0 12px;
     width: min(100px, 10dvh, 20vw);
     font-size: clamp(28px, min(16vw,8dvh), 56px);
 }
 
 #date {
+    padding: 0 12px;
     width: min(400px, 40dvh, 80vw);
     font-size: clamp(10px, min(6vw,3dvh), 20px);
 }
@@ -119,8 +123,8 @@ main {
 #wiptext.fading {
     opacity: 0;
     transition-property: opacity;
-    transition-duration: 0.75s;
-    transition-delay: 0.25s;
+    transition-duration: 1.5s;
+    transition-delay: 0.5s;
 }
 
 #infobutton {
