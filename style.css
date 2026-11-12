@@ -74,11 +74,21 @@ main {
 
 #titlearea {
     display: flex;
+    position: fixed;
     align-items: center;
-    gap: 6px;
     margin: 0 auto;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+}
+
+#title {
+    width: min(100px, 10dvh, 20vw);
+    font-size: clamp(18px, min(10vw,5dvh), 36px);
+}
+
+#date {
+    width: min(400px, 40dvh, 80vw);
+    font-size: clamp(10px, min(6vw,3dvh), 20px);
 }
 
 #wiptext {
