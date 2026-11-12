@@ -130,6 +130,7 @@ for (let i = 0; i < 25; i++) {
     const tile = document.createElement("div");
   
     tile.className = "tile";
+    tile.classList.add("showingup");
     tile.dataset.index = i;
     tile.dataset.selected = "false";
     tile.dataset.replacement = 0;
@@ -319,6 +320,9 @@ function stopDragging() {
                 tile.dataset.letter = " ";
                 tile.textContent = tile.dataset.letter;
             } else {
+                tile.classList.remove("showingup");
+                tile.offsetHeight;
+                tile.classList.add("showingup");
                 let id = (Number)(tile.dataset.index);
                 tile.dataset.letter = tilelets[(tdr + 1) * 25 + id];
                 tile.textContent = tile.dataset.letter;

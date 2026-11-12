@@ -2,7 +2,7 @@
     --t1-color: #426f0f;
     --t2-color: #d4c32b;
     --t3-color: #ad311b;
-    --td-color: #f3f4f0;
+    --td-color: #ebdfb9;
 }
 
 * {
@@ -14,9 +14,9 @@ body {
     height: 100dvh;
     display: grid;
     place-items: center;
-    background: #f3f4f0;
+    background: #ebdfb9;
     color: #1b270d;
-    font-family: system-ui, sans-serif;
+    font-family: Georgia, 'Times New Roman', Times, serif, system-ui, sans-serif;
 }
   
 h1 {
@@ -27,7 +27,7 @@ button {
     text-align: center;
     border: 0;
     padding: 12pt 12pt;
-    background: #f3f4f0;
+    background: #ebdfb9;
     color: #1b270d;
     cursor: pointer;
 }
@@ -148,7 +148,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #f3f4f0;
+    background: #ebdfb9;
     margin: auto auto;
 }
 
@@ -162,7 +162,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #f3f4f0;
+    background: #ebdfb9;
     margin: auto auto;
 }
 
@@ -178,13 +178,25 @@ main {
     display: grid;
     place-items: center;
 
-    background: #f3f4f0;
+    background: #ebdfb9;
     border: 3px solid #426f0f;
     border-radius: 7px;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
     font-weight: bold;
     user-select: none;
     touch-action: none;
+
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0s;
+    transition-delay: 0s;
+}
+
+.tile.showingup {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+    transition-delay: 0.25s;
 }
 
 /* Mobile and narrow windows */
