@@ -1,5 +1,6 @@
 const board = document.querySelector("#gamespace");
 const wiptext = document.querySelector("#wiptext");
+const datetext = document.querySelector("#date");
 let wip="";
 let lastwip="";
 let wipids = [];
@@ -15,6 +16,12 @@ let gameover=false;
 let locDate = new Date();
 let locDateInt = locDate.getFullYear() * 372 + locDate.getMonth() * 31 + locDate.getDate();
 let roller = RNG(makeSeed(locDateInt));
+
+datetext.textContent = locDate.toLocaleDateString('en-US', {
+    month: 'long',
+    day: 'numeric',
+    year: 'numeric'
+});
 
 document.querySelector("#resultspace").classList.remove("shown");
 document.querySelector("#infospace").classList.remove("shown");

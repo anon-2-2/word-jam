@@ -26,7 +26,8 @@ h1 {
   
 button {
     text-align: center;
-    border: 0;
+    border: 3px;
+    border-radius: 7px;
     padding: 12pt 12pt;
     background: var(--td-color);
     color: #1b270d;
@@ -83,7 +84,7 @@ main {
     position: fixed;
     top: 0;
     left:50%;
-    transform: translateX(50%);
+    transform: translateX(-50%);
     align-items: center;
     margin: 0 auto;
     padding: 0 0;
