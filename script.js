@@ -165,7 +165,7 @@ board.addEventListener("pointerdown", (event) => {
 
     wip = tile.dataset.letter;
     tile.dataset.selected = "true";
-    tile.style.backgroundColor = "#787975";
+    tile.style.backgroundColor = "#95928a";
     lasttileid = index;
     wipids.push(index);
 
@@ -193,7 +193,7 @@ board.addEventListener("pointermove", (event) => {
         wip = wip.substring(0, wip.length - 1);
         const tile2 = document.querySelector(`#gamespace .tile[data-index="${wipids[wipids.length - 1]}"]`);
         tile2.dataset.selected = "false";
-        tile2.style.backgroundColor = "#f3f4f0";
+        tile2.style.backgroundColor = "#edeae2";
         //tile2.style.borderColor = getColor(tile2.dataset.replacement);
         lasttileid = wipids[wipids.length - 2];
         wipids.pop();
@@ -233,7 +233,7 @@ board.addEventListener("pointermove", (event) => {
 
     wip += tile.dataset.letter;
     tile.dataset.selected = "true";
-    tile.style.backgroundColor = "#787975";
+    tile.style.backgroundColor = "#95928a";
     lasttileid = index;
     wipids.push(index);
 
@@ -336,7 +336,7 @@ function stopDragging() {
         }
 
         tile.dataset.selected = "false";
-        tile.style.backgroundColor = "#f3f4f0";
+        tile.style.backgroundColor = "#edeae2";
         tile.style.borderColor = getColor(tile.dataset.replacement);
     });
 
@@ -420,7 +420,7 @@ function getColor(replac) {
         return "#ad311b";
     }
     else {
-        return "#f3f4f0";
+        return "#edeae2";
     }
 }
 

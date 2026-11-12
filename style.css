@@ -3,6 +3,7 @@
     --t2-color: #d4c32b;
     --t3-color: #ad311b;
     --td-color: #edeae2;
+    --tb-color: #95928a;
 }
 
 * {
@@ -14,7 +15,7 @@ body {
     height: 100dvh;
     display: grid;
     place-items: center;
-    background: #edeae2;
+    background: var(--td-color);
     color: #1b270d;
     font-family: 'Alegreya', serif;
 }
@@ -27,9 +28,14 @@ button {
     text-align: center;
     border: 0;
     padding: 12pt 12pt;
-    background: #edeae2;
+    background: var(--td-color);
     color: #1b270d;
     cursor: pointer;
+    font-family: 'Alegreya', serif;
+}
+
+button:hover {
+    background: var(--tb-color);
 }
 
 /* Desktop */
@@ -159,7 +165,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #edeae2;
+    background: var(--td-color);
     margin: auto auto;
 }
 
@@ -173,7 +179,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #edeae2;
+    background: var(--td-color);
     margin: auto auto;
 }
 
@@ -189,7 +195,7 @@ main {
     display: grid;
     place-items: center;
 
-    background: #edeae2;
+    background: var(--td-color);
     border: 3px solid #426f0f;
     border-radius: 7px;
     font-size: clamp(14px, min(8vw,4dvh), 28px);
