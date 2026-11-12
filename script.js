@@ -157,6 +157,7 @@ board.addEventListener("pointerdown", (event) => {
     if (tile.dataset.replacement == 3) return;
 
     pointerdn = true;
+    wiptext.classList.remove("fading");
 
     const index = Number(tile.dataset.index);
     const row = Math.floor(index / 5);
@@ -300,9 +301,9 @@ function stopDragging() {
 
     let valid = checkWord(wip);
     if (valid) {
-        lastwip = lastwip + "   ✓";
-    } else {
-        lastwip = lastwip + "   ✕"
+        lastwip = lastwip + " ✓";
+    } else if (wip != "") {
+        lastwip = lastwip + " ✗"
     }
 
     let greensClear = true;
@@ -348,6 +349,10 @@ function stopDragging() {
     if (valid) {
         moves -= 1;
         updateMovesText()
+    } else {
+        wiptext.classList.remove("fading");
+        wiptext.offsetHeight;
+        wiptext.classList.add("fading");
     }
     if (greensClear) {
         score += moves * 10;

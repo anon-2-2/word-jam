@@ -91,6 +91,18 @@ main {
     width: min(399px, calc((50dvh - 24px) * 4 / 5 + 18px), calc((100vw - 24px) * 4 / 5 + 18px));
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+    
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0s;
+    transition-delay: 0s;
+}
+
+#wiptext.fading {
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+    transition-delay: 0.25s;
 }
 
 #infobutton {
