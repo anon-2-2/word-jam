@@ -2,7 +2,7 @@
     --t1-color: #426f0f;
     --t2-color: #d4c32b;
     --t3-color: #ad311b;
-    --td-color: #ebdfb9;
+    --td-color: #edeae2;
 }
 
 * {
@@ -14,9 +14,9 @@ body {
     height: 100dvh;
     display: grid;
     place-items: center;
-    background: #ebdfb9;
+    background: #edeae2;
     color: #1b270d;
-    font-family: Georgia, 'Times New Roman', Times, serif, system-ui, sans-serif;
+    font-family: 'Alegreya', serif;
 }
   
 h1 {
@@ -27,7 +27,7 @@ button {
     text-align: center;
     border: 0;
     padding: 12pt 12pt;
-    background: #ebdfb9;
+    background: #edeae2;
     color: #1b270d;
     cursor: pointer;
 }
@@ -72,6 +72,15 @@ main {
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
 }
 
+#titlearea {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    margin: 0 auto;
+    width: min(500px, 50dvh, 100vw);
+    height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
+}
+
 #wiptext {
     display: flex;
     align-items: center;
@@ -82,28 +91,6 @@ main {
     width: min(399px, calc((50dvh - 24px) * 4 / 5 + 18px), calc((100vw - 24px) * 4 / 5 + 18px));
     height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
     line-height: min(calc(476px / 5), calc(calc(50dvh - 24px) / 5));
-    
-    opacity: 0;
-    transition-property: opacity; 
-    transition-delay: 0s;
-    transition-duration: 0s;
-    color: #71716e;
-}
-
-#wiptext.named {
-    opacity: 1;
-    color: #71716e;
-    transition-property: opacity;
-    transition-duration: 1.5s;
-    transition-delay: 2s;
-}
-
-#wiptext.inprog {
-    opacity: 1;
-    color: black;
-    transition-property: opacity;
-    transition-delay: 0s;
-    transition-duration: 0s;
 }
 
 #infobutton {
@@ -148,7 +135,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #ebdfb9;
+    background: #edeae2;
     margin: auto auto;
 }
 
@@ -162,7 +149,7 @@ main {
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
     height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
-    background: #ebdfb9;
+    background: #edeae2;
     margin: auto auto;
 }
 
@@ -178,7 +165,7 @@ main {
     display: grid;
     place-items: center;
 
-    background: #ebdfb9;
+    background: #edeae2;
     border: 3px solid #426f0f;
     border-radius: 7px;
     font-size: clamp(14px, min(8vw,4dvh), 28px);

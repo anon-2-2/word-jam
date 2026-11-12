@@ -1,6 +1,7 @@
 const board = document.querySelector("#gamespace");
 const wiptext = document.querySelector("#wiptext");
 let wip="";
+let lastwip="";
 let wipids = [];
 let lasttileid=-1;
 let pointerdn=false;
@@ -19,7 +20,6 @@ document.querySelector("#resultspace").classList.remove("shown");
 document.querySelector("#infospace").classList.remove("shown");
 document.querySelector("#resultspace").classList.add("hidden");
 document.querySelector("#infospace").classList.add("hidden");
-wiptext.classList.add("named");
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
@@ -168,9 +168,6 @@ board.addEventListener("pointerdown", (event) => {
     lasttileid = index;
     wipids.push(index);
 
-    wiptext.classList.remove("named");
-    wiptext.offsetHeight;
-    wiptext.classList.add("inprog");
     updateWIPText();
 });
 
@@ -302,6 +299,11 @@ function stopDragging() {
     const tiles = document.querySelectorAll("#gamespace .tile");
 
     let valid = checkWord(wip);
+    if (valid) {
+        lastwip = lastwip + "   ✓";
+    } else {
+        lastwip = lastwip + "   ✕"
+    }
 
     let greensClear = true;
     tiles.forEach((tile) => {
@@ -340,9 +342,6 @@ function stopDragging() {
     lasttileid = -1;
     wip = "";
 
-    wiptext.classList.remove("inprog");
-    wiptext.offsetHeight;
-    wiptext.classList.add("named");
     updateWIPText();
     updateScoreText();
 
@@ -452,13 +451,14 @@ function updateWIPText() {
     const wiph1 = wiptext.querySelector("h1");
     
     if (wip == "") {
-        wiph1.textContent = "P A L I M"
+        wiph1.textContent = lastwip;
     } else {
         let printwip = wip.substring(0,1);
         for (let i = 1; i < wip.length; i++) {
             printwip += " " + wip.substring(i,i+1);
         }
         wiph1.textContent = printwip;
+        lastwip = printwip;
     }
     fitText(wiph1, getComputedStyle(document.querySelector(".tile")).fontSize, 8);
 }
