@@ -29,10 +29,9 @@ if (checkPlayed()) {
     document.querySelector("#infospace").classList.remove("shown");
     document.querySelector("#infospace").classList.add("hidden");
 } else {
-    document.querySelector("#infospace").classList.remove("hidden");
+    document.querySelector("#infospace").classList.add("shown");
     document.querySelector("#infospace").offsetHeight;
     document.querySelector("#infospace").classList.add("fadein");
-    document.querySelector("#infospace").classList.add("shown");
 }
 
 const letters = [
@@ -558,7 +557,7 @@ function savePlayed() {
 }
 
 function checkPlayed() {
-    const savedPlayed = JSON.parse(localStorage.getItem("hasPlayed"));
+    const savedPlayed = JSON.parse(localStorage.getItem("played"));
     console.log(savedPlayed && savedPlayed.yes);
     return savedPlayed && savedPlayed.yes;
 }
