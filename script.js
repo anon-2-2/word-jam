@@ -32,6 +32,7 @@ if (checkPlayed()) {
     document.querySelector("#infospace").classList.remove("hidden");
     document.querySelector("#infospace").offsetHeight;
     document.querySelector("#infospace").classList.add("fadein");
+    document.querySelector("#infospace").classList.add("shown");
 }
 
 const letters = [
