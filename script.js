@@ -24,9 +24,15 @@ datetext.textContent = locDate.toLocaleDateString('en-US', {
 });
 
 document.querySelector("#resultspace").classList.remove("shown");
-document.querySelector("#infospace").classList.remove("shown");
 document.querySelector("#resultspace").classList.add("hidden");
-document.querySelector("#infospace").classList.add("hidden");
+if (checkPlayed()) {
+    document.querySelector("#infospace").classList.remove("shown");
+    document.querySelector("#infospace").classList.add("hidden");
+} else {
+    document.querySelector("#infospace").classList.remove("hidden");
+    document.querySelector("#infospace").offsetHeight;
+    document.querySelector("#infospace").classList.add("fadein");
+}
 
 const letters = [
     'E', 'T', 'A', 'O', 'I', 'N', 'S', 'H',
@@ -255,12 +261,19 @@ document.querySelector("#infobutton").addEventListener("click", () => {
 document.querySelector("#hideinfo").addEventListener("click", () => {
     document.querySelector("#infospace").classList.remove("shown");
     document.querySelector("#infospace").classList.add("hidden");
+    savePlayed();
 });
 
 document.querySelector("#hideresult").addEventListener("click", () => {
     document.querySelector("#resultspace").classList.remove("shown");
     document.querySelector("#resultspace").classList.add("hidden");
 });
+
+document.querySelector("#adspace").addEventListener("click", () => {
+    var url = 'https://ko-fi.com/cilantro22';
+    var win = window.open(url, '_blank');
+    win.focus();
+})
 
 document.querySelector("#copyresult").addEventListener("click", async () => {
     let txt = "Palim " + (locDate.getMonth() + 1) + "/" + locDate.getDate() + "\n";
@@ -301,7 +314,7 @@ document.querySelector("#copyresult").addEventListener("click", async () => {
 function stopDragging() {
     //console.log("stopping drag");
     
-    if (gameover) return;
+    if (gameover || !pointerdn) return;
 
     pointerdn = false;
     const tiles = document.querySelectorAll("#gamespace .tile");
@@ -533,6 +546,20 @@ function saveStatus() {
 
     localStorage.setItem("dailyPuzzle", JSON.stringify(status));
     //console.log("saved");
+}
+
+function savePlayed() {
+    const played = {
+        yes: true
+    };
+
+    localStorage.setItem("played", JSON.stringify(played));
+}
+
+function checkPlayed() {
+    const savedPlayed = JSON.parse(localStorage.getItem("hasPlayed"));
+
+    return savedPlayed && savedPlayed.yes == true;
 }
 
 function checkStatus() {

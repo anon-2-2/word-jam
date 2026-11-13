@@ -169,7 +169,7 @@ main {
     align-items: center;
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
+    height: calc(100dvh - 90px - min(calc(714px / 5), calc(calc(75dvh - 36px) / 5)));
     background: var(--td-color);
     margin: auto auto;
 }
@@ -183,9 +183,14 @@ main {
     align-items: center;
     justify-content: center;
     width: min(500px, 50dvh, 100vw);
-    height: min(calc(500px + (964px / 5)), calc((100dvh - 36px) / 5 + 50dvh));
+    height: calc(100dvh - 90px - min(calc(714px / 5), calc(calc(75dvh - 36px) / 5)));
     background: var(--td-color);
     margin: auto auto;
+
+    opacity: 0;
+    transition-property: opacity;
+    transition-duration: 0s;
+    transition-delay: 0s;
 }
 
 .hidden {
@@ -194,6 +199,13 @@ main {
 
 .shown {
     display: flex;
+}
+
+.fadein {
+    opacity: 1;
+    transition-property: opacity;
+    transition-duration: 0.75s;
+    transition-delay: 0.25s;
 }
 
 .tile {
@@ -235,5 +247,13 @@ main {
         padding: 0 0;
         position: fixed;
         margin: 0 auto;
+    }
+
+    #resultspace {
+        height: calc(100dvh - 15.625vw - min(calc(714px / 5), calc(calc(75dvh - 36px) / 5)));
+    }
+
+    #infospace {
+        height: calc(100dvh - 15.625vw - min(calc(714px / 5), calc(calc(75dvh - 36px) / 5)));
     }
 }
