@@ -54,7 +54,7 @@ main {
     position: fixed;
     margin: 0 auto;
     border: 2pt solid #1b270d;
-    font-size: clamp(14px, min(8vw,4dvh), 28px);
+    font-size: clamp(10px, min(6vw,3dvh), 20px);
 }
 
 #gamespace {
