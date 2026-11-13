@@ -200,6 +200,7 @@ main {
 
 .shown {
     display: flex;
+    opacity: 1;
 }
 
 #infospace.fadein {

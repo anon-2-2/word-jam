@@ -255,6 +255,7 @@ board.addEventListener("pointermove", (event) => {
 
 document.querySelector("#infobutton").addEventListener("click", () => {
     document.querySelector("#infospace").classList.remove("hidden");
+    document.querySelector("#infospace").classList.remove("fadein");
     document.querySelector("#infospace").classList.add("shown");
 });
 
