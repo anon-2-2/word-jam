@@ -53,7 +53,8 @@ main {
     padding: 0 0;
     position: fixed;
     margin: 0 auto;
-    border: 2pt solid #1b270d
+    border: 2pt solid #1b270d;
+    font-size: clamp(14px, min(8vw,4dvh), 28px);
 }
 
 #gamespace {
