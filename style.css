@@ -201,7 +201,7 @@ main {
     display: flex;
 }
 
-.fadein {
+#infospace.fadein {
     opacity: 1;
     transition-property: opacity;
     transition-duration: 0.75s;

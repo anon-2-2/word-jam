@@ -558,8 +558,8 @@ function savePlayed() {
 
 function checkPlayed() {
     const savedPlayed = JSON.parse(localStorage.getItem("hasPlayed"));
-
-    return savedPlayed && savedPlayed.yes == true;
+    console.log(savedPlayed && savedPlayed.yes);
+    return savedPlayed && savedPlayed.yes;
 }
 
 function checkStatus() {
